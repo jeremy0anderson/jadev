@@ -42,6 +42,7 @@ function App() {
       <Navbar/>
       <Routes>
           <Route path="/" element={<Home/>}/>
+          <Route path="/jadev" element={<Home/>}/>
           <Route path="/about" element={<AboutComponent/>}/>
           <Route path="/skills" element={<SkillsComponent/>}/>
           <Route path="/projects" element={<ProjectsComponent/>}/>
