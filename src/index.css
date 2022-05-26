@@ -1,0 +1,67 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: smooth;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+.posRelative {
+  position: relative;
+}
+
+.colorWhite {
+  color: white !important;
+}
+
+.colorBlack {
+  color: black !important;
+}
+
+/* ripped from materialize */
+.shadow {
+  box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.12), 0 1px 5px 0 rgba(0,0,0,0.2);
+}
+
+.navbar-item{
+  display: flex;
+  margin: 10px 10px;
+  color: white;
+}
+
+.skill-logo{
+
+}
+.navbar-burger{
+  background: transparent;
+  border-style: none;
+}
+.white{
+  color: white;
+}
+.black{
+  text-decoration: none;
+  color:black;
+}
+.home-header h1{
+  padding: 20vh ;
+  font-size: 2rem;
+}
+section{
+  display: flex;
+
+}
+hr{
+  width: 0.5px;
+  height:auto;
+  display: flex;
+  vertical-align: middle;
+  margin: 2px;
+}

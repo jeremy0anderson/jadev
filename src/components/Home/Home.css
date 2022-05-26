@@ -1,0 +1,23 @@
+#Home {
+  width: 100vw;
+  min-height: calc(100vh - 52px);
+}
+
+#Home .decorations {
+  z-index: -1;
+  overflow: hidden;
+}
+
+@media only screen and (max-width: 600px) {
+  #Home .decorations {
+    display: none;
+  }
+}
+
+.sectionOverride {
+  align-items: center;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 20%;
+  max-height: calc(100vh - 52px);
+}

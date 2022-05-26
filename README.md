@@ -1,2 +1,2 @@
-# jadev
-Portfolio made with React.js
+# react-portfolio
+Single page portfolio made with React.js
