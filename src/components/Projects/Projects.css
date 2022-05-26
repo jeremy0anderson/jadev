@@ -216,3 +216,6 @@
   flex: 1 1 auto;
   height: 100%;
 }
+.card-img:hover{
+  transform: scale(103%);
+}

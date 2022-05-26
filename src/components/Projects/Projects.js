@@ -5,8 +5,8 @@ const projects = [
         name: 'Assassination',
         desc: 'A multiplayer game utilizing the Socket.io Library, Express.js back end, and a React.js front end',
         image: img,
-        demo: '',
-        source: "https://assassination-v2.herokuapp.com/"
+        demo: 'https://assassination-v2.herokuapp.com/',
+        source: "https://github.com/jeremy0anderson/assassination-v2"
     },
     {
         name: 'Social Network API',
@@ -19,15 +19,15 @@ const projects = [
         name: 'Tech Blog',
         desc: 'A Blog site that utilizes the Model Controler View -- made with Handlebars and Express.js with its own REST API',
         image: 'https://via.placeholder.com/400x410',
-        demo: '',
-        source: 'https://mernstack-blog.herokuapp.com/',
+        demo: 'https://mernstack-blog.herokuapp.com/',
+        source: '',
     },
     {
         name: 'Express.js Notes',
         desc: 'Simple web app to take and save notes',
         image: 'https://via.placeholder.com/400x410',
-        demo: '',
-        source: 'https://expressjs-notes.herokuapp.com'
+        demo: 'https://expressjs-notes.herokuapp.com',
+        source: ''
     }
 ];
 
@@ -38,7 +38,7 @@ export function Projects(){
             return (<div className="column" key={index} >
                 <div className="mCard shadow cardOverride">
                     <div className="mCard-image" style={{ display: 'flex' }}>
-                        <div
+                        <div className="card-img"
                             style={{
                                 flex: '1 1 auto',
                                 minWidth: 300,

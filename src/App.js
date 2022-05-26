@@ -1,5 +1,5 @@
 import React from 'react';
-import {About, Navbar, Header, Projects, Skills, Home} from './components'
+import {About, Navbar, Header, Projects, Skills, Home, Contact, ContactForm} from './components'
 import {Routes, Route} from 'react-router-dom';
 function AboutComponent() {
     return (
@@ -25,6 +25,15 @@ function SkillsComponent(){
         </div>
     )
 }
+function ContactComponent(){
+    return (
+        <div>
+            <Header/>
+            <Contact/>
+            <ContactForm/>
+        </div>
+    )
+}
 function App() {
 
 
@@ -36,6 +45,7 @@ function App() {
           <Route path="/about" element={<AboutComponent/>}/>
           <Route path="/skills" element={<SkillsComponent/>}/>
           <Route path="/projects" element={<ProjectsComponent/>}/>
+          <Route path="/contact" element={<ContactComponent/>}/>
       </Routes>
       </div>
   );
