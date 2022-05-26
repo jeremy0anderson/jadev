@@ -51,8 +51,11 @@ code {
   color:black;
 }
 .home-header h1{
-  padding: 20vh ;
+  padding: 20px;
   font-size: 2rem;
+  display: flex;
+
+  justify-content: center;
 }
 section{
   display: flex;
@@ -64,4 +67,14 @@ hr{
   display: flex;
   vertical-align: middle;
   margin: 2px;
+}
+.card{
+  padding: 20px;
+  flex-direction: column;
+  justify-content: flex-end;
+
+}
+#links{
+
+  float: right;
 }
