@@ -30,7 +30,7 @@ const projects = [
         desc: 'A Blog site that utilizes the Model Controler View -- made with Handlebars and Express.js with its own REST API',
         image: TechBlog,
         demo: 'https://mernstack-blog.herokuapp.com/',
-        source: '',
+        source: 'https://github.com/jeremy0anderson-dev/MERN-stack-blog',
     },
     {
         name: 'Express.js Notes',
@@ -44,7 +44,7 @@ const projects = [
         desc: 'A basic PWA style budget tracker that, when offline, caches user input and then uploads the data to a MongoDB database once back online.',
         image: BudgetTracker,
         demo: 'https://expressjs-notes.herokuapp.com',
-        source: ''
+        source: 'https://github.com/jeremy0anderson-dev/Expressjs-notes'
     }
 ];
 

@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/jadev/static/css/main.2f9a62a9.css",
-    "main.js": "/jadev/static/js/main.05732992.js",
+    "main.js": "/jadev/static/js/main.e242d5c5.js",
     "static/js/787.9ff84419.chunk.js": "/jadev/static/js/787.9ff84419.chunk.js",
     "static/media/BudgetTracker.png": "/jadev/static/media/BudgetTracker.847339bfd10a3bd70b02.png",
     "static/media/TechBlog.png": "/jadev/static/media/TechBlog.7f247fa8e9455058e2d5.png",
@@ -11,11 +11,11 @@
     "static/media/Jeremy-Anderson.pdf": "/jadev/static/media/Jeremy-Anderson.6d46ff128dedf2d9de8b.pdf",
     "index.html": "/jadev/index.html",
     "main.2f9a62a9.css.map": "/jadev/static/css/main.2f9a62a9.css.map",
-    "main.05732992.js.map": "/jadev/static/js/main.05732992.js.map",
+    "main.e242d5c5.js.map": "/jadev/static/js/main.e242d5c5.js.map",
     "787.9ff84419.chunk.js.map": "/jadev/static/js/787.9ff84419.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.2f9a62a9.css",
-    "static/js/main.05732992.js"
+    "static/js/main.e242d5c5.js"
   ]
 }
