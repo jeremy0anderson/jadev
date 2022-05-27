@@ -1,5 +1,8 @@
 import './Home.css';
 import {About, Skills, Projects} from '../index';
+import JeremyAnderson from '../../assets/images/Jeremy-Anderson.pdf';
+import {jsFileDownloader} from 'js-client-file-downloader';
+
 export function Header(){
     return (
         <section className="hero sectionOverride">
@@ -13,7 +16,7 @@ export function Header(){
                     <a className="button" href="#Projects" style={{ marginRight: '0.5rem' }}>
                         Projects
                     </a>
-                    <a className="button" target="_blank" rel="noopener noreferrer" download="../../assets/images/Untitled.pdf">
+                    <a className="button" target="_self" rel="noopener noreferrer" id="resume" href={JeremyAnderson}>
                         Resume
                     </a>
                 </div>

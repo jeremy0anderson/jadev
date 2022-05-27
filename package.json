@@ -9,13 +9,18 @@
     "@testing-library/user-event": "^13.5.0",
     "emailjs": "^4.0.0",
     "emailjs-com": "^3.2.0",
+    "file-saver": "^2.0.5",
+    "fs": "^0.0.1-security",
     "gh-pages": "^4.0.0",
+    "js-client-file-downloader": "^1.0.7",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
+    "react-download": "^0.0.1",
     "react-router-dom": "^6.3.0",
     "react-scripts": "5.0.1",
     "react-scroll": "^1.8.7",
     "react-valid-form-component": "^1.4.7",
+    "save": "^2.5.0",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
