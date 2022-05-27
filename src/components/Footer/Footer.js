@@ -6,7 +6,7 @@ const footerLinks = [{
         link: 'https://cdn.svgporn.com/logos/github.svg'
 },
 {
-    platform: '',
+    platform: 'https://linkedin.com/jeremyanderson-dev',
         link: 'https://cdn.svgporn.com/logos/linkedin.svg',
 }];
 
