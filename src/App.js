@@ -1,5 +1,5 @@
 import React from 'react';
-import {About, Navbar, Header, Projects, Skills, Home, Contact, ContactForm} from './components'
+import {About, Navbar, Header, Projects, Skills, Home, Contact, ContactForm, Footer} from './components'
 import {Routes, Route} from 'react-router-dom';
 function AboutComponent() {
     return (
@@ -26,28 +26,26 @@ function SkillsComponent(){
     )
 }
 function ContactComponent(){
-    return (
+    return(
         <div>
-            <Header/>
             <Contact/>
             <ContactForm/>
-        </div>
-    )
+        </div>)
 }
 function App() {
-
-
     return(
       <div className="App">
-      <Navbar/>
-      <Routes>
-          <Route path="/" element={<Home/>}/>
-          <Route path="/jadev" element={<Home/>}/>
-          <Route path="/about" element={<AboutComponent/>}/>
-          <Route path="/skills" element={<SkillsComponent/>}/>
-          <Route path="/projects" element={<ProjectsComponent/>}/>
-          <Route path="/contact" element={<ContactComponent/>}/>
-      </Routes>
+          <Navbar/>
+          <Routes>
+              <Route path="/" element={<Home/>}/>
+              <Route path="/home" element={<Home/>}/>
+              <Route path="/jadev" element={<Home/>}/>
+              <Route path="/about" element={<About/>}/>
+              <Route path="/skills" element={<Skills/>}/>
+              <Route path="/projects" element={<Projects/>}/>
+              <Route path="/contact" element={<ContactComponent/>}/>
+          </Routes>
+          <Footer/>
       </div>
   );
 }

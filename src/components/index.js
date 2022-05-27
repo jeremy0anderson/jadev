@@ -5,4 +5,5 @@ import {Projects} from "./Projects/Projects";
 import {Home, Header} from './Home/Home';
 import {Contact} from './Contact/Contact';
 import {ContactForm} from './Contact/ContactForm';
-export {About, Navbar, Home, Skills, Header, Contact, Projects, ContactForm}
+import {Footer} from './Footer/Footer';
+export {About, Navbar, Home, Skills, Header, Contact, Projects, ContactForm, Footer}

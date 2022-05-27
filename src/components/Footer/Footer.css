@@ -1,0 +1,13 @@
+#Footer{
+    margin: 15px 0;
+    display: flex;
+    justify-content: space-evenly;
+    position: static;
+    height: 12vh;
+    background-color: #f1ece9;
+
+}
+
+#Footer .footer-logo{
+    width: 10vw;
+}

@@ -7,7 +7,6 @@
   align-items: center;
   justify-content: center;
 }
-/* ripped from materialize Card element */
 
 .mCard {
   position: relative;
@@ -142,12 +141,13 @@
 }
 
 .mCard .mCard-image .mCard-title {
-  color: #fff;
+  color: gray(10);
   position: absolute;
   bottom: 0;
   left: 0;
   max-width: 100%;
-  padding: 24px;
+  margin: 10px;
+  padding: 0;
 }
 
 .mCard .mCard-content {
@@ -216,6 +216,13 @@
   flex: 1 1 auto;
   height: 100%;
 }
-.card-img:hover{
+.mCard:hover{
   transform: scale(103%);
+}
+.content{
+  display: flex;
+  flex-wrap: wrap;
+}
+.icon:hover{
+  transform: scale(107%);
 }

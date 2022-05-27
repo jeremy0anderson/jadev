@@ -17,16 +17,25 @@
     display: flex;
 }
 #Skills .image {
-  width: 100px;
-  height: auto;
-  margin: 10px;
+  place-self: center;
+ margin: 10px;
+  width: 5vw;
+  height:auto;
 }
 #Skills .skills-container {
-  display: grid; grid-template: auto auto / auto auto auto;
+  display: grid; grid-template: 15vh / auto auto auto;
   flex-wrap: wrap;
   margin-inline: 40px;
 
 }
 #Skills .skill-card{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  text-align:center;
   margin: 20px;
+}
+.skill-name{
+    position: static;
+    place-self: center;
 }
