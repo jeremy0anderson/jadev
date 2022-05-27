@@ -105,8 +105,8 @@ emailjs.init("GcEAPFoFBFLNO769J");
                   <i className="fas fa-envelope"/>
                 </span>
               </div>
+                <p className="error">{emailError}</p>
             </div>
-            <p className="error">{emailError}</p>
           </div>
           <div className="column">
             <div className="field">
@@ -136,8 +136,8 @@ emailjs.init("GcEAPFoFBFLNO769J");
                   <i className="fas fa-comments"/>
                 </span>
               </div>
+                <p className="error">{subjectError}</p>
             </div>
-              <p className="error">{subjectError}</p>
           </div>
         </div>
         <div>
