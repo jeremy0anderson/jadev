@@ -13,7 +13,7 @@ export function Header(){
                     <a className="button" href="#Projects" style={{ marginRight: '0.5rem' }}>
                         Projects
                     </a>
-                    <a className="button" target="_blank" rel="noopener noreferrer" download="" href="https://google.com">
+                    <a className="button" target="_blank" rel="noopener noreferrer" download="../../assets/images/Untitled.pdf">
                         Resume
                     </a>
                 </div>
