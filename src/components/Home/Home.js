@@ -2,7 +2,12 @@ import './Home.css';
 import {About, Skills, Projects} from '../index';
 import JeremyAnderson from '../../assets/images/Jeremy-Anderson.pdf';
 import {jsFileDownloader} from 'js-client-file-downloader';
-
+const bioComponents = [
+    "Hardworking, passionate, and personable full stack web developer with strong communication, interpersonal, organizational, and time management skills.",
+    "Recently decided to undergo a drastic change in career paths from social work to developer,",
+    "Both driven and committed to becoming part of a team of like-minded individuals",
+    "Pursuing a position in back end, front end, or full stack web development."
+];
 export function Header(){
     return (
         <section className="hero sectionOverride">
