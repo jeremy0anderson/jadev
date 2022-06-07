@@ -1,21 +1,23 @@
 {
   "files": {
-    "main.css": "/jadev/static/css/main.2f9a62a9.css",
-    "main.js": "/jadev/static/js/main.eab1b149.js",
+    "main.css": "/jadev/static/css/main.6708eb86.css",
+    "main.js": "/jadev/static/js/main.a53ebb35.js",
     "static/js/787.9ff84419.chunk.js": "/jadev/static/js/787.9ff84419.chunk.js",
+    "static/media/social-network.png": "/jadev/static/media/social-network.5eab6a76768239ea109c.png",
     "static/media/BudgetTracker.png": "/jadev/static/media/BudgetTracker.847339bfd10a3bd70b02.png",
     "static/media/TechBlog.png": "/jadev/static/media/TechBlog.7f247fa8e9455058e2d5.png",
     "static/media/player-win-blue.png": "/jadev/static/media/player-win-blue.bbacc9ad3c39d4f53ddf.png",
     "static/media/img.png": "/jadev/static/media/img.6f1f1e9f0eb4c6e301d3.png",
     "static/media/pfp.jpg": "/jadev/static/media/pfp.8179845072d92e3a3831.jpg",
-    "static/media/Jeremy-Anderson.pdf": "/jadev/static/media/Jeremy-Anderson.6d46ff128dedf2d9de8b.pdf",
+    "static/media/Jeremy_Anderson_Resume (1).pdf": "/jadev/static/media/Jeremy_Anderson_Resume (1).70b79bd59a72aa7a8715.pdf",
+    "static/media/notes.png": "/jadev/static/media/notes.acc6f5055915eed0e8ca.png",
     "index.html": "/jadev/index.html",
-    "main.2f9a62a9.css.map": "/jadev/static/css/main.2f9a62a9.css.map",
-    "main.eab1b149.js.map": "/jadev/static/js/main.eab1b149.js.map",
+    "main.6708eb86.css.map": "/jadev/static/css/main.6708eb86.css.map",
+    "main.a53ebb35.js.map": "/jadev/static/js/main.a53ebb35.js.map",
     "787.9ff84419.chunk.js.map": "/jadev/static/js/787.9ff84419.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.2f9a62a9.css",
-    "static/js/main.eab1b149.js"
+    "static/css/main.6708eb86.css",
+    "static/js/main.a53ebb35.js"
   ]
 }
