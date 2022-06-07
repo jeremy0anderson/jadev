@@ -3,6 +3,8 @@ import img from '../../assets/images/img.png';
 import TechBlog from "../../assets/images/TechBlog.png";
 import BudgetTracker from '../../assets/images/BudgetTracker.png';
 import player_win_blue from '../../assets/images/player-win-blue.png';
+import Notes from '../../assets/images/notes.png';
+import socialNetwork from '../../assets/images/social-network.png';
 const projects = [
     {
         name: 'Assassination',
@@ -21,9 +23,9 @@ const projects = [
     {
         name: 'Social Network API',
         desc: 'A scalable base for a social network back end. Includes an API with routes to post thoughts + comments, add friends, and add reactions to comments on posts. Made with Node, Express.js, and MongoDB (Mongoose)',
-        image: 'https://via.placeholder.com/400x410',
-        demo: '',
-        source: 'https://github.com/jeremy0anderson/NOSQL-Social-Network-API',
+        image: socialNetwork,
+        demo: 'https://drive.google.com/file/d/14QRGIlP37n8v5GMyhs6roavbmUiFg9Xb/view?usp=sharing',
+        source: 'https://github.com/jeremy0anderson/NoSQL-Social-Media-API',
     },
     {
         name: 'Tech Blog',
@@ -35,7 +37,7 @@ const projects = [
     {
         name: 'Express.js Notes',
         desc: 'Simple web app to take and save notes',
-        image: 'https://via.placeholder.com/400x410',
+        image: Notes,
         demo: 'https://expressjs-notes.herokuapp.com',
         source: ''
     },
@@ -56,7 +58,8 @@ export function Projects(){
                 <div className="column" key={index} >
                 <div className="mCard shadow cardOverride">
                     <div className="mCard-image" style={{ display: 'flex' }}>
-                        <div className="card-img"
+                        <a className="card-img"
+                           href={demo}
                             style={{
                                 flex: '1 1 auto',
                                 minWidth: 300,

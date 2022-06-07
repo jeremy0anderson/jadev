@@ -19,8 +19,8 @@
 #Skills .image {
   place-self: center;
  margin: 10px;
-  width: 5vw;
-  height:auto;
+  width: 8vw;
+  height:8vh;
 }
 #Skills .skills-container {
   display: grid; grid-template: 15vh / auto auto auto;

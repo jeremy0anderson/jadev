@@ -5,18 +5,19 @@
 .iconsContainer {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-evenly;
 }
 
 .mCard {
   position: relative;
   margin: 0.5rem 0 1rem 0;
   background-color: #fff;
-  -webkit-transition: -webkit-box-shadow .25s;
-  transition: -webkit-box-shadow .25s;
-  transition: box-shadow .25s;
-  transition: box-shadow .25s, -webkit-box-shadow .25s;
+  /*-webkit-transition: -webkit-box-shadow .25s;*/
+  /*transition: -webkit-box-shadow .25s;*/
+  /*transition: box-shadow .25s;*/
+  /*transition: box-shadow .25s, -webkit-box-shadow .25s;*/
   border-radius: 2px;
+  padding: 5px;
 }
 
 .mCard .mCard-title {
@@ -217,12 +218,36 @@
   height: 100%;
 }
 .mCard:hover{
-  transform: scale(103%);
+  animation-name: projectCards;
+  animation-duration: 600ms;
+  animation-timing-function: ease-in-out;
 }
 .content{
   display: flex;
   flex-wrap: wrap;
 }
 .icon:hover{
-  transform: scale(107%);
+  border-radius: 100%;
+  transform: scale(104%);
+  animation-name: projectCards;
+  animation-duration: 800ms;
+  animation-timing-function: ease-in-out;
+}
+.mCard-image:hover{
+  animation-name: projectImages;
+  animation-duration: 300ms;
+  animation-timing-function: ease-in-out;
+}
+@keyframes projectImages{
+  25%{transform: scale(102%)}
+  50%{transform: scale(103%)}
+  75%{transform: scale(102%)}
+  100%{}
+  }
+@keyframes projectCards{
+  0%{}
+  25%{box-shadow: #a6acad 1px 2px 10px 3px;}
+  50%{box-shadow: #a6acad 1px 3px 15px 3px;}
+  75%{box-shadow: #a6acad 1px 2px 10px 3px;}
+  100%{}
 }
