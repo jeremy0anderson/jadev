@@ -1,39 +1,44 @@
 {
-  "name": "portfolio-template-1",
+  "name": "navigation",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://jeremy0anderson.github.io/jadev/",
   "dependencies": {
-    "@testing-library/jest-dom": "^5.16.4",
-    "@testing-library/react": "^13.2.0",
-    "@testing-library/user-event": "^13.5.0",
-    "animate.css": "^4.1.1",
-    "emailjs": "^4.0.0",
-    "emailjs-com": "^3.2.0",
-    "file-saver": "^2.0.5",
-    "fs": "^0.0.1-security",
-    "gh-pages": "^4.0.0",
-    "js-client-file-downloader": "^1.0.7",
-    "react": "^18.1.0",
-    "react-dom": "^18.1.0",
-    "react-download": "^0.0.1",
+    "@emailjs/browser": "^3.6.2",
+    "@emotion/react": "^11.10.0",
+    "@emotion/styled": "^11.10.0",
+    "@mui/icons-material": "^5.8.4",
+    "@mui/material": "^5.10.1",
+    "@nextui-org/react": "^1.0.0-beta.9",
+    "@react-spring/parallax": "^9.5.2",
+    "@testing-library/jest-dom": "^5.16.5",
+    "@testing-library/react": "^13.3.0",
+    "@testing-library/user-event": "^14.4.3",
+    "dotenv": "^16.0.1",
+    "framer-motion": "^7.2.0",
+    "jda-ui": "^1.1.33",
+    "prop-types": "^15.8.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-icons": "^4.4.0",
+    "react-loader-spinner": "^5.2.0",
+    "react-nav-with-drawer": "^1.0.1",
     "react-router-dom": "^6.3.0",
     "react-scripts": "5.0.1",
-    "react-scroll": "^1.8.7",
-    "react-valid-form-component": "^1.4.7",
-    "save": "^2.5.0",
+    "react-spring": "^9.5.2",
+    "styled-components": "^5.3.5",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "preeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
-    "extends": "react-app"
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
   },
   "browserslist": {
     "production": [

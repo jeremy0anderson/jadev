@@ -1,0 +1,35 @@
+#navbar-drawer-toggle {
+    display: none;
+}
+#navbar-menu-noDrawer{
+    display: flex;
+    height: 100%;
+    z-index: 200000;
+}
+#navbar-menu-noDrawer > ul {
+    width: 100%;height: 100%;
+    display: flex; justify-content: left; align-items: center; align-content: center;
+}
+@media(max-width: 650px) {
+    #navbar-drawer-toggle {
+        display: flex;
+    }
+    #navbar-menu-noDrawer{
+        display: none;
+    }
+}
+
+#Navbar {
+}
+
+/*@keyframes gradient {*/
+/*    0% {*/
+/*        background-position: 0% 50%;*/
+/*    }*/
+/*    50% {*/
+/*        background-position: 100% 30%;*/
+/*    }*/
+/*    100% {*/
+/*        background-position: 0% 50%;*/
+/*    }*/
+/*}*/
