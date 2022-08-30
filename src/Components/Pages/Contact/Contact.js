@@ -3,8 +3,11 @@ import {Spacer, Text, Container as NContainer} from '@nextui-org/react';
 import {Card, Button, Box, TextField, Container} from '@mui/material';
 import {init, send} from '@emailjs/browser';
 import {TailSpin} from "react-loader-spinner";
-import AnimatedText from "../../Motion/AnimatedTxt";
 import {motion} from 'framer-motion';
+import {Components} from 'ja-ui-react';
+import {default as MotionText} from '../../Motion/Text';
+import * as M from "@mui/material";
+import skillsArr, {Skills} from "../About/Skills";
 
 init(process.env.REACT_APP_PUBLIC_KEY);
 
@@ -161,133 +164,136 @@ class Contact extends Component {
             }
         };
         return (
-            // <Box sx={{display: "flex", justifyContent: "center", alignItems: "center", alignContent: "center", height: "80%", width: "100%", p:0, left: 0}}>
-              <Container
-                    maxWidth={"md"}
-                    style={{display: 'flex', justifyContent: 'center', alignItems: "center", position: 'relative', top: 200}}>
-      
-      
-              <Card
-                      elevation={8}
-                      style={{
+            <M.Box
+                style={{zIndex:1000, display: 'flex', width: "100%", flexDirection:'column', overflow:'visible', alignItems:'center', alignContent:'center', height: "calc(100% - 60px)", position: 'relative'}}>
 
-                    display: "flex",
-                    justifyContent: "center",
-                    alignItems: "center",
-                    alignContent: "center",
-                          width: "85%",
-                    // width:{
-                    //     xs: "80%",
-                    //     sm: "80%",
-                    //     md: "70%",
-                    //     lg: "60%",
-                    //     xl: "50%"
-                    // },
-                          margin:10,
-                    zIndex: 1010,
-                    padding: 15,
-                    flexDirection:"column",
-                    overflow: "visible"}}>
-                    <motion.div
-                          initial="hidden"
-                          // animate="visible"
-                          animate={this.state.replay ? "visible" : "hidden"}
-                          variants={container}
-                          style={{y:-100,position: 'relative', background: "linear-gradient(45deg, rgb(125, 10, 201) 0%, rgb(125, 0, 100) 100%)", borderRadius:10,  padding: "10px", width: "100%", display: 'flex', boxShadow:"2px 2px 8px" }}>
-                        <AnimatedText visibleColor={"#fff"} hiddenColor={"#fff"}  {...{type:"heading1", text: "Contact me"}} speed={"slow"}/>
-                    </motion.div>
-                    <Box
-                        id={"Contact-form"}
-                        onSubmit={this.handleSubmit}
-                        component={"form"}>
+                <M.Container
+                    maxWidth={"md"}
+                    style={{
+                        display: 'flex',
+                        justifyContent: 'center',
+                        alignItems: "center",
+                        alignContent: "center"}}>
+                    <Card
+                        elevation={5}
+                        style={{
+                            maxWidth: 1000,
+                            minWidth: 350,
+                            position: "relative",
+                            overflow: "visible",
+                            padding: 20,
+                            display: 'flex',
+                            // gridTemplate: "auto auto / auto",
+                            justifyContent:'center',
+                            alignItems: 'center',
+                            width: "100%",
+                            margin:5}}>
                         <Box
-                            sx={{
-                                display:'flex',
-                                justifyContent: "center",
-                                flexDirection:{
+                            style={{width: '100%'}}
+                            id={"Contact-form"}
+                            onSubmit={this.handleSubmit}
+                            component={"form"}>
+                            <Box
+                                sx={{
+                                    flexDirection: {
+                                        xs: "column",
+                                        sm: "row",
+                                        md: "row",
+                                        lg: "row",
+                                        xl: "row"
+                                    }
+                                }}
+                                style={{
+                                    width: "100%",
+                                    display:'flex',
+                                    justifyContent: "center",
+                                }}>
+                                <Spacer x={1} y={0}/>
+                                <TextField
+                                    variant={"outlined"}
+                                    required={true}
+                                    onBlur={this.handleNameBlur}
+                                    sx={{marginInline: .5}}
+                                    onChange={this.handleNameChange}
+                                    aria-label={"name field"}
+                                    type={"text"}
+                                    color={"secondary"}
+                                    helperText={this.state.nameError?"Name required":" "}
+                                    error={this.state.nameError}
+                                    value={this.state.name}
+                                    label={"Name"}/>
+                                <Spacer x={1} y={0.5}/>
+                                <TextField
+                                    variant={"outlined"}
+                                    type={"email"}
+                                    required={true}
+                                    onBlur={this.handleEmailBlur}
+                                    sx={{marginInline: .5}}
+                                    color={"secondary"}
+                                    onChange={this.handleEmailChange}
+                                    aria-label={"email field"}
+                                    error={this.state.emailError}
+                                    helperText={this.state.emailError?"Email required":" "}
+                                    value={this.state.email}
+                                    label={"Email"}/>
+                                <Spacer x={1} y={0.5}/>
+                                <TextField
+                                    variant={"outlined"}
+                                    required={true}
+                                    onBlur={this.handleSubjectBlur}
+                                    sx={{marginInline: .5}}
+                                    color={"secondary"}
+                                    onChange={this.handleSubjectChange}
+                                    aria-label={"subject-field"}
+                                    label={"Subject"}
+                                    value={this.state.subject}
+                                    helperText={this.state.subjectError?"Subject required":" "}
+                                    error={this.state.subjectError}
+                                />
+                                <Spacer x={1} y={0}/>
+                            </Box>
+                            <Spacer x={0} y={1}/>
+                            <Box
+                                sx={{display:'flex', justifyContent: "center", width: "100%",flexDirection: {
                                     xs: "column",
                                     sm: "row",
                                     md: "row",
                                     lg: "row",
                                     xl: "row"
-                                }
-                            }}>
-                            <TextField
-                                variant={"outlined"}
-                                required={true}
-                                onBlur={this.handleNameBlur}
-                                sx={{marginInline: .5}}
-                                onChange={this.handleNameChange}
-                                aria-label={"name field"}
-                                type={"text"}
-                                color={"secondary"}
-                                helperText={this.state.nameError?"Name required":" "}
-                                error={this.state.nameError}
-                                value={this.state.name}
-                                label={"Name"}/>
-                            <Spacer x={0} y={0.5}/>
-                            <TextField
-                                variant={"outlined"}
-                                type={"email"}
-                                required={true}
-                                onBlur={this.handleEmailBlur}
-                                sx={{marginInline: .5}}
-                                color={"secondary"}
-                                onChange={this.handleEmailChange}
-                                aria-label={"email field"}
-                                error={this.state.emailError}
-                                helperText={this.state.emailError?"Email required":" "}
-                                value={this.state.email}
-                                label={"Email"}/>
-                            <Spacer x={0} y={0.5}/>
-                            <TextField
-                                variant={"outlined"}
-                                required={true}
-                                onBlur={this.handleSubjectBlur}
-                                sx={{marginInline: .5}}
-                                color={"secondary"}
-                                onChange={this.handleSubjectChange}
-                                aria-label={"subject-field"}
-                                label={"Subject"}
-                                value={this.state.subject}
-                                helperText={this.state.subjectError?"Subject required":" "}
-                                error={this.state.subjectError}
-                                />
+                                }}}>
+                                <Spacer x={1} y={0}/>
+                                <TextField
+                                    onChange={this.handleMessageChange}
+                                    required={true}
+                                    onBlur={this.handleMessageBlur}
+                                    sx={{marginInline: .5, fontFamily: "sans-serif", width: "100%"}}
+                                    multiline={true}
+                                    minRows={3}
+                                    value={this.state.message}
+                                    label={"Message"}
+                                    helperText={this.state.messageError?"Subject required":" "}
+                                    error={this.state.messageError}
+                                    color={"secondary"}/>
+                                <Spacer x={1} y={0}/>
+                            </Box>
+                            <Text css={{color: "green", margin: 5}}>{this.state.resMessage}</Text>
+                            <Spacer x={0} y={.5}/>
+                            <Box
+                                sx={{
+                                    display:'flex',
+                                    justifyContent: "center",
+                                    width: "100%",
+                                }}>
+                                <Button
+                                    disabled={this.state.emailError || this.state.nameError || this.state.messageError || this.state.subjectError}
+                                    sx={{width: "98%", marginInline:.5}} variant={"contained"} type={"submit"}>
+                                    {this.state.loading? <TailSpin color="#00BFFF" height={30} width={30} visible={this.state?.loading}/>: "Send"}
+                                </Button>
+                            </Box>
                         </Box>
-                        <Spacer x={0} y={1}/>
-                        <Box
-                            sx={{display:'flex', justifyContent: "center", width: "100%", flexDirection: "column"}}>
-                            <TextField
-                                onChange={this.handleMessageChange}
-                                required={true}
-                                onBlur={this.handleMessageBlur}
-                                sx={{marginInline: .5, fontFamily: "sans-serif"}}
-                                multiline={true}
-                                minRows={3}
-                                value={this.state.message}
-                                label={"Message"}
-                                helperText={this.state.messageError?"Subject required":" "}
-                                error={this.state.messageError}
-                                color={"secondary"}/>
-                        </Box>
-                        <Text css={{color: "green", margin: 5}}>{this.state.resMessage}</Text>
-                        <Spacer x={0} y={.5}/>
-                        <Box
-                            sx={{
-                                display:'flex',
-                                justifyContent: "center",
-                                width: "100%",
-                            }}>
-                            <Button
-                                disabled={this.state.emailError || this.state.nameError || this.state.messageError || this.state.subjectError}
-                                sx={{width: "98%", marginInline:.5}} variant={"contained"} type={"submit"}>
-                                {this.state.loading? <TailSpin color="#00BFFF" height={30} width={30} visible={this.state?.loading}/>: "Send"}
-                            </Button>
-                        </Box>
-                    </Box>
-                </Card>
-            {/*// </Box>*/}
-            </Container>
+                    </Card>
+                </M.Container>
+            </M.Box>
         );
     }
 }

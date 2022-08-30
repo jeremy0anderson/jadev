@@ -1,5 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
+import {Text} from '@nextui-org/react';
 const Wrapper = (props) => {
     return <span className="word-wrapper">{props.children}</span>;
 };
@@ -19,7 +20,7 @@ const AnimatedText = (props) => {
     }
     const item = {
         hidden: {
-            y: "100%",
+            y: props.down?"-100%":"100%",
             color: props.hiddenColor,
             transition: {type: "spring", duration: 0.3, ease: [0.15, 0.5, 0.7, 1]
             }

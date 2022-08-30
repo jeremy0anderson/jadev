@@ -13,10 +13,10 @@ const ButtonRef = forwardRef((props, ref)=>{
     return (<MButton ref={ref} {...props}/>)
 }), Button = motion(ButtonRef);
 const CardRef = forwardRef((props, ref)=>{
-    return (<M.Card ref={ref}{...props}/>)
+    return (<M.Card ref={ref} {...props}/>)
 }), Card = motion(CardRef);
 const IconRef = forwardRef((props, ref)=>{
-    return (<IconButton ref={ref}{...props}/>)
+    return (<IconButton ref={ref} {...props}/>)
 }), Icon = motion(IconRef);
 
 export {Container, Button, Card, Icon}
