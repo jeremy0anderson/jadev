@@ -48,11 +48,11 @@ const AnimatedText = (props) => {
     const Tag = tagMap[props.type];
     let fontSize;
     switch(props.type){
-        case "h1":fontSize=50; break;
-        case "h2":fontSize=40; break;
-        case "h3":fontSize=30; break;
-        case "h4":fontSize=25; break;
-        case "h5":fontSize=20; break;
+        case "h1":fontSize=70; break;
+        case "h2":fontSize=60; break;
+        case "h3":fontSize=50; break;
+        case "h4":fontSize=35; break;
+        case "h5":fontSize=25; break;
         case "h6":fontSize=18; break;
         case "p":fontSize=12; break;
         default: fontSize=12; break;
@@ -107,6 +107,7 @@ function MotionText(props) {
             animate={props.visible ? "visible" : "hidden"}
             variants={container}
             custom={props.custom}
+            style={{display: 'flex'}}
         >
             <div className="container">
                 {props.textItems.map((item, index) => {

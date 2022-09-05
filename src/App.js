@@ -29,54 +29,59 @@ function App(props){
     //     return x.name==="shiny-octo-chainsaw"
     // })
     return(
-        <div>
+        <div style={{width: "auto"}}>
             {/*<div style={{zIndex: 2000, position: "fixed", width: "100vw"}}>*/}
             {/*<Navbar/>*/}
             {/*</div>*/}
-            <div style={{zIndex: 10000, width: "auto", height: 60, position: "fixed"}}>
+            <div style={{zIndex: 10000, width: "100vw", height: 60, position: "fixed"}}>
               <Components.Navigation anchor={"top"} items={items}  menuBackground={'rgb(40,40,40)'} background={'rgb(20, 20, 20)'}>
-                  <div id={"Dropdown-container"}
-                      style={{display: 'flex'}}>
-                      <div id={"DropDowns"} style={{marginInline:10}}>
-                      <Dropdown
-                          triggerType={"dialog"}>
-                          <Dropdown.Button color={"white"}>
-                              Backend
-                          </Dropdown.Button>
-                          <Dropdown.Menu onAction={(key)=>{
-                              nav(`/projects/${key}`);
-                          }}>
-                              <Dropdown.Item variant={"shadow"} key={""}>
-                                  <Text></Text>
-                              </Dropdown.Item>
-                          </Dropdown.Menu>
-                      </Dropdown>
-                      </div>
-                      <div style={{marginInline:10}}>
-                      <Dropdown triggerType={"dialog"}>
-                          <Dropdown.Button color={"white"}>
-                              Frontend
-                          </Dropdown.Button>
-                          <Dropdown.Menu onAction={(key)=>{
-                              nav(`/projects/${key}`);
-                          }}>
-                              <Dropdown.Item variant={"shadow"} key={"ja-ui-react"}>
-                                  <Text>React.js Navigation</Text>
-                              </Dropdown.Item>
-                          </Dropdown.Menu>
-                      </Dropdown>
-                      </div>
-                  </div>
+                       {/*<div id={"Dropdown-container"}*/}
+                  {/*    style={{display: 'flex'}}>*/}
+                  {/*    /!*<div id={"DropDowns"} style={{display: 'flex', justifyContent:"center", alignItems: 'center',marginInline:10}}>*!/*/}
+                  {/*    /!*<Dropdown*!/*/}
+                  {/*    /!*    triggerType={"dialog"}>*!/*/}
+                  {/*    /!*    <Dropdown.Button*!/*/}
+                  {/*    /!*          size={"sm"} color={"white"}>*!/*/}
+                  {/*    /!*        Backend*!/*/}
+                  {/*    /!*    </Dropdown.Button>*!/*/}
+                  {/*    /!*    <Dropdown.Menu onAction={(key)=>{*!/*/}
+                  {/*    /!*        nav(`/projects/${key}`);*!/*/}
+                  {/*    /!*    }}>*!/*/}
+                  {/*    /!*        <Dropdown.Item variant={"shadow"} key={""}>*!/*/}
+                  {/*    /!*            <Text></Text>*!/*/}
+                  {/*    /!*        </Dropdown.Item>*!/*/}
+                  {/*    /!*    </Dropdown.Menu>*!/*/}
+                  {/*    /!*</Dropdown>*!/*/}
+                  {/*    /!*</div>*!/*/}
+                  {/*    /!*<div style={{marginInline:10}}>*!/*/}
+                  {/*    /!*<Dropdown triggerType={"dialog"}>*!/*/}
+                  {/*    /!*    <Dropdown.Button size={"sm"} color={"white"}>*!/*/}
+                  {/*    /!*        Frontend*!/*/}
+                  {/*    /!*    </Dropdown.Button>*!/*/}
+                  {/*    /!*    <Dropdown.Menu onAction={(key)=>{*!/*/}
+                  {/*    /!*        nav(`/projects/${key}`);*!/*/}
+                  {/*    /!*    }}>*!/*/}
+                  {/*    /!*        <Dropdown.Item variant={"shadow"} key={"ja-ui-react"}>*!/*/}
+                  {/*    /!*            <Text>React.js Navigation</Text>*!/*/}
+                  {/*    /!*        </Dropdown.Item>*!/*/}
+                  {/*    /!*    </Dropdown.Menu>*!/*/}
+                  {/*    /!*</Dropdown>*!/*/}
+                  {/*    /!*</div>*!/*/}
+                  {/*    */}
+                  {/*</div>*/}
+                  
+                  
               </Components.Navigation>
             </div>
             <div
                 style={{
-                    width: "100%",
-                    height: "100vh",
-                    paddingTop:60,
+                    width: "auto",
+                    height: "100%",
+                      position: 'relative',
                     // height: "100vh",
-                    overflow: "visible",
-                    display: 'block',
+                    alignItems: 'center',
+                    overflow: "scroll",
+                    display: 'flex',
                     justifyContent:"center",
                     background: 'transparent',
                 }}>
@@ -87,11 +92,11 @@ function App(props){
                 {/*    }*/}
                 {/*)}*/}
                 <Routes>
-                    <Route path={"/"} element={<div style={{justifyContent:'center', display: 'flex', width: "100vw",position: "relative", paddingTop:45, height: "auto"}}><Landing/></div>}/>
+                    <Route path={"/"} element={<Landing/>}/>
                         <Route path={"/about"} element={<About/>}/>
                         <Route path={"/contact"} element={<div>
                             <motion.div
-                                style={{position: 'relative', left: 20, width: "auto", maxWidth: 300}}>
+                                style={{position: 'relative', left: 0, width: "auto", maxWidth: 300}}>
                                 <MotionText color={"rgb(0,0,0)"} textItems={[{type: "h2", text: "Contact"}, {type: "h4", text: "Enter your details to send me an email"}]} visible={true} bounce={0.4} custom={0.09} duration={2}/>
                             </motion.div>
                             <Contact/>

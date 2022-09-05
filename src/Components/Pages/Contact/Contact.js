@@ -1,12 +1,13 @@
 import React, {Component} from 'react';
-import {Spacer, Text, Container as NContainer} from '@nextui-org/react';
-import {Card, Button, Box, TextField, Container} from '@mui/material';
+import {Spacer,Button, Text, Container as NContainer, Input, Textarea} from '@nextui-org/react';
+import {Card, Box, TextField, Container} from '@mui/material';
 import {init, send} from '@emailjs/browser';
 import {TailSpin} from "react-loader-spinner";
 import {motion} from 'framer-motion';
 import {Components} from 'ja-ui-react';
 import {default as MotionText} from '../../Motion/Text';
 import * as M from "@mui/material";
+import * as I from "@mui/icons-material";
 import skillsArr, {Skills} from "../About/Skills";
 
 init(process.env.REACT_APP_PUBLIC_KEY);
@@ -164,21 +165,20 @@ class Contact extends Component {
             }
         };
         return (
-            <M.Box
-                style={{zIndex:1000, display: 'flex', width: "100%", flexDirection:'column', overflow:'visible', alignItems:'center', alignContent:'center', height: "calc(100% - 60px)", position: 'relative'}}>
+            <motion.div
+                style={{zIndex:1000, display: 'flex', width: "auto", flexDirection:'column', overflow:'visible', alignItems:'center', alignContent:'center', height: "calc(100% - 60px)", position: 'relative'}}>
 
-                <M.Container
-                    maxWidth={"md"}
+                <motion.div
                     style={{
+                        maxWidth: 800,
                         display: 'flex',
                         justifyContent: 'center',
                         alignItems: "center",
                         alignContent: "center"}}>
-                    <Card
-                        elevation={5}
+                    <motion.div
                         style={{
-                            maxWidth: 1000,
-                            minWidth: 350,
+                            maxWidth: 800,
+                            width: "100%",
                             position: "relative",
                             overflow: "visible",
                             padding: 20,
@@ -186,114 +186,105 @@ class Contact extends Component {
                             // gridTemplate: "auto auto / auto",
                             justifyContent:'center',
                             alignItems: 'center',
-                            width: "100%",
                             margin:5}}>
-                        <Box
-                            style={{width: '100%'}}
+                        <motion.form
+                            style={{width: '100%', display: 'flex', flexDirection: "column"}}
                             id={"Contact-form"}
                             onSubmit={this.handleSubmit}
                             component={"form"}>
-                            <Box
-                                sx={{
-                                    flexDirection: {
-                                        xs: "column",
-                                        sm: "row",
-                                        md: "row",
-                                        lg: "row",
-                                        xl: "row"
-                                    }
-                                }}
-                                style={{
-                                    width: "100%",
-                                    display:'flex',
-                                    justifyContent: "center",
+                            <motion.div
+                                  id={"contact-fields"}
+                                  style={{
+                                        width: "auto",
+                                        display:'flex',
+                                        justifyContent: "center",
                                 }}>
-                                <Spacer x={1} y={0}/>
-                                <TextField
-                                    variant={"outlined"}
-                                    required={true}
-                                    onBlur={this.handleNameBlur}
-                                    sx={{marginInline: .5}}
+                                <Spacer y={1} className={"spacer"}/>
+                                <Input
+                                    className={"contact-input"}
+                                    bordered
+                                    label={"Name"}
+                                    color={this.state.nameError?"error":"primary"}
                                     onChange={this.handleNameChange}
-                                    aria-label={"name field"}
-                                    type={"text"}
-                                    color={"secondary"}
                                     helperText={this.state.nameError?"Name required":" "}
-                                    error={this.state.nameError}
+                                    onBlur={this.handleNameBlur}
+                                    required={true}
                                     value={this.state.name}
-                                    label={"Name"}/>
-                                <Spacer x={1} y={0.5}/>
-                                <TextField
-                                    variant={"outlined"}
+                                    helperColor={"error"}
+                                    contentLeft={<I.Person/>}/>
+                                <Spacer y={1} className={"spacer"}/>
+                                <Input
+                                    className={"contact-input"}
+                                    bordered
                                     type={"email"}
                                     required={true}
                                     onBlur={this.handleEmailBlur}
-                                    sx={{marginInline: .5}}
-                                    color={"secondary"}
+                                    color={this.state.emailError?"error":"primary"}
                                     onChange={this.handleEmailChange}
-                                    aria-label={"email field"}
-                                    error={this.state.emailError}
-                                    helperText={this.state.emailError?"Email required":" "}
+                                    helperText={this.state.emailError?"Enter a valid email":" "}
                                     value={this.state.email}
-                                    label={"Email"}/>
-                                <Spacer x={1} y={0.5}/>
-                                <TextField
-                                    variant={"outlined"}
-                                    required={true}
-                                    onBlur={this.handleSubjectBlur}
-                                    sx={{marginInline: .5}}
-                                    color={"secondary"}
-                                    onChange={this.handleSubjectChange}
-                                    aria-label={"subject-field"}
-                                    label={"Subject"}
-                                    value={this.state.subject}
-                                    helperText={this.state.subjectError?"Subject required":" "}
-                                    error={this.state.subjectError}
-                                />
+                                    helperColor={"error"}
+                                    label={"Email"}
+                                    contentClickable={true}
+                                    enterKeyHint={"next"}
+                                    contentLeft={<I.Email/>}/>
+                                <Spacer y={1} className={"spacer"}/>
+                                <Input
+                                      className={"contact-input"}
+                                      bordered
+                                      required={true}
+                                      onBlur={this.handleSubjectBlur}
+                                      color={this.state.subjectError?"error":"primary"}
+                                      onChange={this.handleSubjectChange}
+                                      label={"Subject"}
+                                      value={this.state.subject}
+                                      helperText={this.state.subjectError?"Subject required":" "}
+                                      contentLeft={<I.Subject/>}
+                                      helperColor={"error"}/>
                                 <Spacer x={1} y={0}/>
-                            </Box>
+                            </motion.div>
                             <Spacer x={0} y={1}/>
-                            <Box
-                                sx={{display:'flex', justifyContent: "center", width: "100%",flexDirection: {
-                                    xs: "column",
-                                    sm: "row",
-                                    md: "row",
-                                    lg: "row",
-                                    xl: "row"
-                                }}}>
-                                <Spacer x={1} y={0}/>
-                                <TextField
+                            <motion.div
+                                style={{display:'flex', justifyContent: "center", width: "100%"}}>
+                                <Spacer className={"textarea-spacer"} x={1} y={0}/>
+                                <div style={{display: 'flex', flexDirection: "column",width: "100%"}}>
+                                
+                                <Textarea
+                                    bordered
                                     onChange={this.handleMessageChange}
                                     required={true}
                                     onBlur={this.handleMessageBlur}
-                                    sx={{marginInline: .5, fontFamily: "sans-serif", width: "100%"}}
-                                    multiline={true}
+                                    style={{fontFamily: "sans-serif", width: "100%"}}
                                     minRows={3}
                                     value={this.state.message}
                                     label={"Message"}
                                     helperText={this.state.messageError?"Subject required":" "}
-                                    error={this.state.messageError}
-                                    color={"secondary"}/>
-                                <Spacer x={1} y={0}/>
-                            </Box>
+                                    helperColor={"error"}
+                                    color={this.state.messageError?"error":"primary"}/>
+                                </div>
+                                <Spacer className={"textarea-spacer"} x={1} y={0}/>
+                            </motion.div>
                             <Text css={{color: "green", margin: 5}}>{this.state.resMessage}</Text>
                             <Spacer x={0} y={.5}/>
-                            <Box
-                                sx={{
+                            <motion.div
+                                style={{
                                     display:'flex',
                                     justifyContent: "center",
                                     width: "100%",
                                 }}>
+                                <Spacer className={"textarea-spacer"} x={1} y={1}/>
                                 <Button
                                     disabled={this.state.emailError || this.state.nameError || this.state.messageError || this.state.subjectError}
-                                    sx={{width: "98%", marginInline:.5}} variant={"contained"} type={"submit"}>
+                                    style={{width: "100%"}} type={"submit"}>
                                     {this.state.loading? <TailSpin color="#00BFFF" height={30} width={30} visible={this.state?.loading}/>: "Send"}
                                 </Button>
-                            </Box>
-                        </Box>
-                    </Card>
-                </M.Container>
-            </M.Box>
+                                <Spacer className={"textarea-spacer"} x={1} y={1}/>
+                                
+                            </motion.div>
+                        </motion.form>
+                    </motion.div>
+                </motion.div>
+            </motion.div>
         );
     }
 }

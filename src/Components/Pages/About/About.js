@@ -1,15 +1,14 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
-import * as M from '@mui/material';
-import {Container, Card} from "../../Motion/Motion";
 import skillsArr, {Skills, initSkillsArr} from "./Skills";
+import {motion} from 'framer-motion'
 
 
 class About extends React.Component {
     constructor(props) {
         super(props);
         this.state={
-            open: false,
+            open: true,
             replay:true
         }
     }
@@ -28,22 +27,20 @@ class About extends React.Component {
                 visible: {
                       opacity: 1,
                       transition: {
-                            staggerChildren: 0.035
+                            staggerChildren: 0.075
                       }
                 }
           };
         return (
-           <M.Box
-                style={{zIndex:1000, display: 'flex', flexDirection:'column', overflow:'visible', alignItems:'center', alignContent:'center', height: "calc(100% - 60px)", position: 'relative'}}>
-            <M.Container
-                maxWidth={"md"}
+           <motion.div
+                style={{zIndex:1000, display: 'flex', flexDirection:'column', overflow:'hidden', alignItems:'center', alignContent:'center', height: "calc(100% - 60px)", position: 'relative'}}>
+            <motion.div
                 style={{
                     display: 'flex',
                     justifyContent: 'center',
                     alignItems: "center",
                     alignContent: "center"}}>
-                    <Card
-                        elevation={5}
+                    <motion.div
                         style={{
                             position: "relative",
                             overflow: "visible",
@@ -55,9 +52,9 @@ class About extends React.Component {
                             width: "100%",
                             margin:10}}>
                      <Skills skillSet={skillsArr}/>
-               </Card>
-            </M.Container>
-           </M.Box>
+               </motion.div>
+            </motion.div>
+           </motion.div>
         );
     }
 }

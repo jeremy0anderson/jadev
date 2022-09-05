@@ -32,10 +32,11 @@ const container  = {
     hidden:(props)=>{
         return {
             overflow: "hidden",
-            opacity: props.first?1:0,
-            height: props.first?"auto":0,
+            opacity:props.first?0:1,
+            height: 0,
             transition: {
-                staggerChildren: .0325
+                duration:0.7,
+                staggerChildren: .045
             }
         }
     },
@@ -43,120 +44,162 @@ const container  = {
         opacity: 1,
         height: "auto",
         transition: {
-            type: "spring", bounce: 0.5,
-            duration: 0.9,
-            staggerChildren: .0525
+            type: "spring", bounce: 0.1,
+            duration: 0.7,
+            staggerChildren: .025
         }
     }
 };
-export const initSkillsArr=[
-    {
-        skill: 'React',
-        link: 'https://cdn.svgporn.com/logos/react.svg',
-        progress: "90%"
+const items = {
+    hidden:(init)=>{
+        return {
+            opacity: init?1:0,
+            y: "-100%",
+            transition: {
+                type: "spring", bounce: 0.2,
+                duration: 0.7,
+            }
+        }
     },
-    {
-        skill: 'Javascript',
-        link: 'https://cdn.svgporn.com/logos/javascript.svg',
-        progress: "100%"
-    },
-    {
-        skill: 'MongoDB',
-        link: 'https://cdn.svgporn.com/logos/mongodb.svg',
-        progress: "80%"
-    },
-    {
-        skill: 'GraphQL',
-        link: 'https://cdn.svgporn.com/logos/graphql.svg',
-        progress: "70%"
+    visible: {
+        opacity: 1,
+        y:0,
+        transition: {
+            type: "spring", bounce: 0.2,
+            duration: 0.3
+        }
     }
+}
+export const initSkillsArr=[
+
 ]
 
 const skillsArr = [
     {
+        skill: 'React',
+        link: 'https://cdn.svgporn.com/logos/react.svg',
+        progress: "90%",
+        init:true
+    },
+    {
+        skill: 'Javascript',
+        link: 'https://cdn.svgporn.com/logos/javascript.svg',
+        progress: "100%",
+        init:true
+    },
+    {
+        skill: 'MongoDB',
+        link: 'https://cdn.svgporn.com/logos/mongodb.svg',
+        progress: "80%",
+        init: true
+    },
+    {
+        skill: 'GraphQL',
+        link: 'https://cdn.svgporn.com/logos/graphql.svg',
+        progress: "70%",
+        init:true
+    },
+    {
         skill: 'React/Router',
         link: 'https://cdn.svgporn.com/logos/react-router.svg',
-        progress: "90%"
+        progress: "90%",
+        init:false
     },
     {
         skill: 'JWT',
         link: 'https://cdn.svgporn.com/logos/jwt-icon.svg',
-        progress: "90%"
+        progress: "90%",
+        init:false
     },
     {
         skill: 'MUI',
         link: 'https://cdn.svgporn.com/logos/material-ui.svg',
-        progress: "90%"
+        progress: "90%",
+        init:false
     },
     {
         skill: 'Framer',
         link: 'https://cdn.svgporn.com/logos/framer.svg',
-        progress: "80%"
+        progress: "80%",
+        init:false
     },
     {
         skill: 'HTML5',
         link: 'https://cdn.svgporn.com/logos/html-5.svg',
-        progress: "100%"
+        progress: "100%",
+        init:false
     },
     {
         skill: 'CSS3',
         link: 'https://cdn.svgporn.com/logos/css-3.svg',
-        progress: "100%"
+        progress: "100%",
+        init:false
     },
     {
         skill: 'Express',
         link: 'https://cdn.svgporn.com/logos/express.svg',
-        progress: "100%"
+        progress: "100%",
+        init:false
     },
     {
         skill: 'Node',
         link: 'https://cdn.svgporn.com/logos/nodejs.svg',
-        progress: "100%"
+        progress: "100%",
+        init:false
     },
     {
         skill: 'Apollo',
         link: 'https://cdn.svgporn.com/logos/apollostack.svg',
-        progress: "80%"
+        progress: "80%",
+        init:false
     },
     {
         skill: 'jQuery',
         link: 'https://cdn.svgporn.com/logos/jquery.svg',
-        progress: "70%"
+        progress: "70%",
+        init:false
     },
     {
         skill: 'Handlebars',
         link: 'https://cdn.svgporn.com/logos/handlebars.svg',
-        progress: "100%"
+        progress: "100%",
+        init:false
     },
     {
         skill: 'Bulma',
         link: 'https://cdn.svgporn.com/logos/bulma.svg',
-        progress: "100%"
+        progress: "100%",
+        init:false
     },
     {
         skill: "Sequelize",
         link: "https://cdn.svgporn.com/logos/sequelize.svg",
-        progress: "100%"
+        progress: "100%",
+        init:false
     },
     {
         skill: 'Socket.io',
         link: 'https://cdn.svgporn.com/logos/socket.io.svg',
-        progress: "80%"
+        progress: "80%",
+        init:false
     },
     {
         skill: 'WebStorm',
         link: 'https://cdn.svgporn.com/logos/webstorm.svg',
-        progress: "100%"
+        progress: "100%",
+        init:false
     },
     {
         skill: 'VS Code',
         link: 'https://cdn.svgporn.com/logos/visual-studio-code.svg',
-        progress: "100%"
+        progress: "100%",
+        init:false
     },
     {
         skill: 'MySQL',
         link: 'https://cdn.svgporn.com/logos/mysql.svg',
-        progress: "80%"
+        progress: "80%",
+        init:false
     }
 ];
 const moreSkillsArr = [
@@ -170,7 +213,7 @@ class Skills extends React.Component{
     constructor(props) {
         super(props);
         this.state={
-            open:false,
+            open:true,
             replay:false
         }
         this.toggle=this.toggle.bind(this);
@@ -207,10 +250,11 @@ class Skills extends React.Component{
                 style={{display: 'flex', flexWrap: "wrap", justifyContent: 'center', alignItems: "center", alignContent: "center"}}
                 custom={props}
                 variants={container}>
-                {props.skillSet.map(({skill, link, progress}, index)=>{
+                {props.skillSet.map(({skill, link, progress, init}, index)=>{
                     let p = skill;
                     return(
                         <Box
+                            className={"skill-card"}
                             onHoverStart={()=>{
                                 switch(progress){
                                     case "100%": p = 10+"/10"; break;
@@ -235,12 +279,12 @@ class Skills extends React.Component{
                                     :document.getElementById(skill+"typography").textContent=skill;  break;
                             }}}
                             onTapCancel={()=>{return document.getElementById(skill+"typography").textContent = skill;}}
-                            animate={this.state.open
-                                ?{ opacity: 1, y:0}
-                                :{opacity:props.first?1:0, y:0}}
-                            transition={this.state.open
-                                ?{type: 'spring', bounce: 0.1,duration: 0.4, delay: index/15*0.4}
-                                :{type: 'spring', bounce: 0.1,duration: 0.4, delay: index/30*0.4}}
+                            // animate={this.state.open
+                            //     ?{ opacity: 1, y:0}
+                            //     :{opacity:props.first?1:0, y:0}}
+                            // transition={this.state.open
+                            //     ?{type: 'spring', bounce: 0.1,duration: 0.4, delay: index/15*0.4}
+                            //     :{type: 'spring', bounce: 0.1,duration: 0.4, delay: index/30*0.4}}
                             style={{
                                 overflow:'hidden',
                                 y: "100%",
@@ -248,12 +292,12 @@ class Skills extends React.Component{
                                 background: "rgba(200, 200, 200, 0.1)",
                                 padding: "10px",
                                 margin:"5px",
-                                width: 100,
-                                height: 110,
                                 display: 'flex',
                                 justifyContent:"center",
                                 alignContent:"center",
                                 alignItems: "center"}}
+                            variants={items}
+                            custom={init}
                             key={skill}>
                             <motion.div
                                 id={skill+'main'}
@@ -267,14 +311,14 @@ class Skills extends React.Component{
                                     flexDirection: 'column',
                                     alignItems: "center",
                                     alignContent: 'center'}}
-                                animate={{y:this.state.open?0:0}}>
+                                animate={{y:this.state.open?0:"-100%"}}>
                                 <img key={skill+"img"} src={link} alt={skill} width={70} height={70}/>
                                 <Spacer x={0} y={1}/>
                                 <div
+                                      className={"proficiency-bar"}
                                     style={{
                                         height: 25,
                                         overflow: "hidden",
-                                        width: 90,
                                         borderRadius: 6,
                                         display: 'flex',
                                         background: 'rgba(100, 100, 100, 0.2)',
@@ -308,7 +352,7 @@ class Skills extends React.Component{
                     width: "100%",
                     height: "100%"
             }}>
-                <this.Set first={true} skillSet={initSkillsArr}/>
+                {/*<this.Set first={true} skillSet={initSkillsArr}/>*/}
                 <this.Set first={false} skillSet={this.props.skillSet}/>
                 <Spacer x={0} y={1}/>
                 <motion.button

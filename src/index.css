@@ -13,12 +13,32 @@ body {
    height: 100vh;
 
  }
+ .textarea-spacer{
+   display: flex;
+ }
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
 h1, h2, h3, h4, h5, h6{
   margin:10px 0;
+}
+.skill-card{
+  width: 150px;
+  height: 190px;
+}
+.nextui-input-helper-text-container{
+  position: relative;
+  right: 10px;
+  top: 100%;
+  text-align: right!important;
+
+}
+.spacer{
+  display: flex;
+}
+input{
+  margin-bottom: 10px;
 }
 #Landing{
   max-width: 1000px!important;
@@ -36,6 +56,19 @@ h1, h2, h3, h4, h5, h6{
   float: left;
 }
 #Me{
+}
+.proficiency-bar{
+  width: 150px;
+}
+.contact-input{
+  margin-bottom: 5px;
+}
+#contact-fields{
+  flex-direction:row;
+}
+#Avatar{
+  width: 300px;
+  height: 300px;
 }
 @media(max-width:650px){
   #Dropdown-container{
@@ -61,6 +94,29 @@ h1, h2, h3, h4, h5, h6{
   }
   #Landing-about{
     width: 390px!important;
+  }
+  #Avatar{
+    width:200px;
+    height:200px;
+  }
+  #contact-fields{
+    flex-direction: column;
+  }
+  .contact-input{
+    margin-bottom:0;
+  }
+  .spacer{
+    display: contents;
+  }
+  .textarea-spacer{
+    display: none!important;
+  }
+  .proficiency-bar{
+    width: 90px;
+  }
+  .skill-card{
+    width: 90px;
+    height: 110px;
   }
   #Avatar{
     width:200px;
