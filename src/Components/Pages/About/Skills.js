@@ -213,7 +213,7 @@ class Skills extends React.Component{
     constructor(props) {
         super(props);
         this.state={
-            open:true,
+            open:false,
             replay:false
         }
         this.toggle=this.toggle.bind(this);

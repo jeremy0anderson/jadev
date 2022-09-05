@@ -15,6 +15,21 @@ const octokit = new Octokit(process.env.REACT_APP_GH_ACCESS_TOKEN);
     octokit.request('GET /users/jeremy0anderson/repos').then(({data})=> {
         localStorage.setItem('gh-data', JSON.stringify(data));
     });
+    const AboutPage= (props)=>{
+          return(
+                <motion.div
+                      initial={{x: "-100%", opacity: 0}}
+                      transition={{duration: 0.6}}
+                      whileInView={{x: 0, opacity: 1}}
+                      id="Landing-about" style={{position: 'relative', top: 60, marginTop: 5, minWidth:390, height: "100vh"}}>
+                      <motion.div
+                            style={{position: 'relative', x: 0,  opacity: 1, width: "auto", borderBottom: "1px solid black"}}>
+                            <MotionText color={"rgb(5,5,5)"} textItems={[{type: "h2", text: "About"}]} visible={true} bounce={0.4} custom={0.002} duration={0.4}/>
+                      </motion.div>
+                      <About/>
+                </motion.div>
+          )
+    }
 function App(props){
     const items = ["Home", "About", "Contact", "Projects"]
     const [checked, setChecked] = React.useState(false);
@@ -93,7 +108,7 @@ function App(props){
                 {/*)}*/}
                 <Routes>
                     <Route path={"/"} element={<Landing/>}/>
-                        <Route path={"/about"} element={<About/>}/>
+                        <Route path={"/about"} element={<AboutPage/>}/>
                         <Route path={"/contact"} element={<div>
                             <motion.div
                                 style={{position: 'relative', left: 0, width: "auto", maxWidth: 300}}>

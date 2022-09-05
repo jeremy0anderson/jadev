@@ -1,8 +1,21 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
 import skillsArr, {Skills, initSkillsArr} from "./Skills";
-import {motion} from 'framer-motion'
+import {motion, useInView} from 'framer-motion'
 
+function SkillsInView(props){
+      const ref = React.useRef(null);
+      const inView = useInView(ref, {once: false});
+      
+      
+      
+      return(
+            <motion.div
+                  ref={ref}>
+                  <Skills skillSet={skillsArr}/>
+            </motion.div>
+      )
+}
 
 class About extends React.Component {
     constructor(props) {
