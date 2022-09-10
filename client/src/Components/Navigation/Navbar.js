@@ -4,6 +4,45 @@ import {motion, MotionConfig} from 'framer-motion';
 import {FiMenu} from "react-icons/fi";
 import {CgMenu} from "react-icons/cg";
 
+class Drawer extends React.Component{
+    constructor(props) {
+        super(props);
+        this.state= {
+            open: false
+        }
+    }
+    componentDidMount() {}
+    shouldComponentUpdate(nextProps, nextState, nextContext) {return this.props!==nextProps || this.state!==nextState || this.context!==nextContext;}
+    componentDidUpdate(prevProps, prevState, snapshot) {
+    
+    }
+    componentWillUnmount() {}
+    
+    toggle(){
+        this.setState({
+            ...this.state,
+            open: !this.state.open
+        })
+    }
+    render(){
+        return(
+              <motion.div
+                    style={{
+                        backdropFilter: "blur(3px)",
+                        display: 'flex', alignItems: 'center', position: "fixed!important", left: 0,height: 60, width: "100vw"}}
+                    id={"Navbar"}>
+                  <motion.div
+                        id={"Toolbar"}
+                        style={{background: 'transparent', display: 'flex', alignItems: 'center',width: "100vw", height: 60}}>
+                  
+                  </motion.div>
+              </motion.div>
+        )
+    }
+    
+}
+
+
 class Navbar extends React.Component{
     constructor(props) {
         super(props);
@@ -68,6 +107,7 @@ class Navbar extends React.Component{
           
           const maxWidth = "calc(100% - 30px)";
         return(
+<<<<<<< Updated upstream
               <MotionConfig transition={{type:'spring', bounce: 0.1, duration: 0.2}}>
                     <motion.div
                           custom={this.state}
@@ -115,6 +155,22 @@ class Navbar extends React.Component{
                           </motion.div>
                     </motion.div>
               </MotionConfig>
+=======
+              <motion.div
+                    style={{
+                        borderBottomRightRadius: 10,
+                        borderBottomLeftRadius: 10,
+                        zIndex: 1000,
+                        backdropFilter: "blur(18px)",
+                        display: 'flex', alignItems: 'center', position: "fixed", left: 0,height: 80, width: "100vw"}}
+                    id={"Navbar"}>
+                  <motion.div
+                        id={"Toolbar"}
+                        style={{background: 'transparent', display: 'flex', alignItems: 'center',width: "100vw", height: 60, position: 'fixed',}}>
+          
+                  </motion.div>
+              </motion.div>
+>>>>>>> Stashed changes
         )
     }
 }

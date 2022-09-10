@@ -88,8 +88,26 @@ export const skillsArr = [
         init:true
     },
     {
+        skill:"Typescript",
+        link:"https://cdn.svgporn.com/logos/typescript-icon.svg",
+        progress: "70%",
+        init:true
+    },
+    {
         skill: 'MongoDB',
         link: 'https://cdn.svgporn.com/logos/mongodb.svg',
+        progress: "80%",
+        init: true
+    },
+    {
+        skill: 'Heroku',
+        link: 'https://cdn.svgporn.com/logos/heroku-icon.svg',
+        progress: "90%",
+        init: true
+    },
+    {
+        skill: 'Firebase',
+        link: 'https://cdn.svgporn.com/logos/firebase.svg',
         progress: "80%",
         init: true
     },
@@ -529,12 +547,14 @@ class Skills extends React.Component {
               style={{ width: "90%",padding: 20, display: 'flex', flexWrap: 'wrap', justifyContent: 'center', alignItems: 'center', height: "100%"}}
               initial={{
                   opacity:0,
+                  y:-10,
                   transition: {
                       staggerChildren: .045
                   }
               }}
               whileInView={{
                   opacity: 1,
+                  y:0,
                   transition: {
                       staggerChildren: .045
                   }
@@ -559,7 +579,7 @@ class Skills extends React.Component {
                              alignItems: 'center',
                              justifyContent: 'center',
                              margin: "5px 5px",
-                             overflow: 'hidden', height: 140, width: 110, boxShadow: "0 1px 7px 0"}}
+                             overflow: 'hidden', height: 140, width: 110, boxShadow: "-1px 3px 4px -1px"}}
                          key={skill+"card"+index}
                          viewport={{once:false, amount:0}}
                          initial={"hidden"}
@@ -572,7 +592,7 @@ class Skills extends React.Component {
                              layout
                              variants={itemVariants}
                              key={skill+"-img-container"}>
-                              <Image width={70} height={70} src={link} alt={skill+"-image"}/>
+                              <Image className={'skill-logo'} width={70} height={70} src={link} alt={skill+"-image"}/>
                               <Text
                                  key={skill+"text"}>
                                   {skill}

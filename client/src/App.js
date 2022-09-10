@@ -4,14 +4,18 @@ import {default as C} from './Components';
 import {Projects} from "./Components/Pages/Projects/Projects";
 import {Navigation, Nav} from 'ja-ui-react';
 import MotionText from "./Components/Motion/Text";
-import {Dropdown, Text} from "@nextui-org/react";
+import {Dropdown, Spacer, Container, Text, css} from "@nextui-org/react";
 import {Octokit, App as OApp} from "octokit";
 import {Link, useNavigate} from 'react-router-dom';
 import cert from './assets/images/coding-bootcamp-full-stack-developer-certificate.1.webp';
 import {useEffect} from "react";
 import {motion} from "framer-motion";
 import Home from './Components/Pages/Home/Home';
-const {Contact, About, Container, Navbar} = C;
+import Register from "./Components/Pages/User/Register";
+import Login from './Components/Pages/User/Login';
+import Skills, {skillsArr} from "./Components/Pages/About/Skills";
+import * as I from "react-icons/io5";
+const {Contact, About, Navbar} = C;
 
 const octokit = new Octokit(process.env.REACT_APP_GH_ACCESS_TOKEN);
     octokit.request('GET /users/jeremy0anderson/repos').then(({data})=> {
@@ -20,15 +24,24 @@ const octokit = new Octokit(process.env.REACT_APP_GH_ACCESS_TOKEN);
     const AboutPage= (props)=>{
           return(
                 <motion.div
-                      initial={{x: "-100%", opacity: 0}}
+                      initial={{y: "-100%", opacity: 0}}
                       transition={{duration: 0.6}}
-                      whileInView={{x: 0, opacity: 1}}
-                      id="Landing-about" style={{position: 'relative', top: 60, marginTop: 5, minWidth:390, height: "100vh"}}>
+                      whileInView={{y: 0, opacity: 1}}
+                      id="Landing-about"
+                      style={{position: 'relative', top: 60, marginTop: 5, minWidth:390, height: "100%", width: "100%"}}>
                       <motion.div
-                            style={{position: 'relative', x: 0,  opacity: 1, width: "auto", borderBottom: "1px solid black"}}>
+                            style={{position: 'relative', x: 0,  opacity: 1, width: "100%", borderBottom: "1px solid black"}}>
                             <MotionText color={"rgb(5,5,5)"} textItems={[{type: "h2", text: "About"}]} visible={true} bounce={0.4} custom={0.002} duration={0.4}/>
                       </motion.div>
-                      <About/>
+                      <div
+                         style={{display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column'}}
+                         id={"Skills-section"}>
+                         <motion.div
+                         style={{position: 'relative', x: 0,  opacity: 1, width: "auto", borderBottom: "1px solid black"}}>
+                         <MotionText color={"rgb(5,5,5)"} textItems={[{type: "h4", text: "Skills"}]} visible={true} bounce={0.4} custom={0.002} duration={0.4}/>
+                      </motion.div>
+                      <Skills skillSet={skillsArr}/>
+                      </div>
                 </motion.div>
           )
     }
@@ -56,12 +69,52 @@ class App extends React.Component{
                   text: "Projects",
                   to: "/projects"
                }]
+               const LRef = React.forwardRef((props, ref) => {
+                  return (<Link to={props.to} {...props} ref={ref}/>);
+               }), MLink = motion(LRef);
+            const Div = motion.div;
+            const Button = motion.button;
             return(
+<<<<<<< Updated upstream
                   <div style={{width: "auto"}}>
                               {/*<Navigation anchor={"top"} items={items}  menuBackground={'rgb(40,40,40)'} background={'rgb(20, 20, 20)'}>*/}
                               
                               {/*</Navigation>*/}
                         <Navbar/>
+=======
+                  <motion.div
+                     style={{width: "100vw", height: "100%"}}>
+                        <Navbar></Navbar>
+                     {/*<Navigation anchor={"top"} items={items}  menuBackground={'rgb(40,40,40)'} background={'rgb(20, 20, 20)'}>*/}
+                     {/*</Navigation>*/}
+                        <Div
+                              style={{display: 'flex', flexDirection: "column", justifyContent: 'space-between', position: 'fixed', right: 10, height: 'auto', bottom: 20, zIndex: 1000}}
+                              id={"Socials"}>
+                              <motion.a
+                                    whileHover={{boxShadow: '2px 2px 4px 1px'}}
+                                    style={{borderRadius:"40%", textDecoration: 'none', color: '#080056'}}
+                                    target={"_blank"}
+                                    href={"https://github.com/jeremy0anderson"}>
+                                    <Button
+                                          style={{width: 60, height: 60, display: 'flex', justifyContent:'center', alignItems: 'center', borderRadius:"40%"}}
+                                          className={"socials-btn"}>
+                                          <I.IoLogoGithub size={35}/>
+                                    </Button>
+                              </motion.a>
+                              <motion.a
+                                    whileHover={{boxShadow: '2px 2px 4px 1px'}}
+                                    style={{borderRadius:"40%", textDecoration: 'none', color: '#080056'}}
+                                    target={"_blank"}
+                                    href={"https://linkedin.com/in/jeremyanderson-dev"}>
+                                    <Button
+                                          style={{width: 60, height: 60, display: 'flex', justifyContent:'center', alignItems: 'center', borderRadius:"40%"}}
+                                          className={"socials-btn"}>
+                                          <I.IoLogoLinkedin size={35}/>
+                                    </Button>
+                              </motion.a>
+                        </Div>
+                     
+>>>>>>> Stashed changes
                         <Routes>
                               <Route path={"/"} element={<Home/>}/>
                               <Route path={"/about"} element={<AboutPage/>}/>
@@ -69,9 +122,11 @@ class App extends React.Component{
                                     <div>
                                           <Contact/>
                                     </div>}/>
-                              <Route path={"/projects/ja-ui-react"} element={<iframe  src={"https://github.com/jeremy0anderson/j-ui/tree/main/jda-ui"}>NPM</iframe>}/>
+                              <Route path={"/register"} element={<Register/>}/>
+                              <Route path={"/login"} element={<Login/>}/>
+
                         </Routes>
-                  </div>
+                  </motion.div>
             )
       }      
 }
