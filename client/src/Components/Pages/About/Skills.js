@@ -32,7 +32,7 @@ const container  = {
     hidden:(props)=>{
         return {
             overflow: "hidden",
-            opacity:props.first?0:1,
+            opacity:0,
             height: 0,
             transition: {
                 duration:0.7,
@@ -74,7 +74,7 @@ export const initSkillsArr=[
 
 ]
 
-const skillsArr = [
+export const skillsArr = [
     {
         skill: 'React',
         link: 'https://cdn.svgporn.com/logos/react.svg',
@@ -209,7 +209,7 @@ const Box = motion.div;
 const CRef = React.forwardRef((props, ref)=> {
     return <M.Container ref={ref}/>
 }), Container = motion(CRef);
-class Skills extends React.Component{
+class _Skills extends React.Component{
     constructor(props) {
         super(props);
         this.state={
@@ -311,11 +311,11 @@ class Skills extends React.Component{
                                     flexDirection: 'column',
                                     alignItems: "center",
                                     alignContent: 'center'}}
-                                animate={{y:this.state.open?0:"-100%"}}>
+                                animate={{y:this.state.open?0:"100%"}}>
                                 <img key={skill+"img"} src={link} alt={skill} width={70} height={70}/>
                                 <Spacer x={0} y={1}/>
                                 <div
-                                      className={"proficiency-bar"}
+                                    className={"proficiency-bar"}
                                     style={{
                                         height: 25,
                                         overflow: "hidden",
@@ -365,12 +365,7 @@ class Skills extends React.Component{
     }
 }
 
-Skills.propTypes = {
-    skillSet: PropTypes.arrayOf(object)
 
-}
-export default skillsArr;
-export {Skills, moreSkillsArr}
 const f = ()=> (
     <div>
     {/*<Box*/}
@@ -466,3 +461,134 @@ const f = ()=> (
 {/*    </Box>*/}
     </div>
 )
+
+const containerVariants = {
+    hidden:{
+        opacity:0,
+        y:-50,
+        transition: {
+            type: 'spring',
+            duration:0.7,
+            staggerChildren: .045
+        }
+    },
+    visible: {
+        opacity: 1,
+        y:0,
+        transition: {
+            type: "spring", bounce: 0.1,
+            duration: 0.8,
+            staggerChildren: .045
+        }
+    }
+};
+const itemVariants = {
+    hidden: {
+        opacity: 0,
+        y:-200,
+        transition: {
+            type: "spring", bounce: 0.2,
+            duration: 0.7,
+        }
+    },
+    visible:delay =>{
+        return {
+            opacity: 1,
+            y:0,
+           transition: {
+            type: "spring", bounce: 0.2,
+               duration: 1,delay: delay/10
+        }
+    }
+    }
+}
+class Skills extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            open: false,
+            replay: false
+        }
+        this.skillRef=React.createRef();
+        this.toggle = this.toggle.bind(this);
+    }
+    componentDidMount() {}
+    componentDidUpdate(prevProps, prevState, snapshot) {}
+    shouldComponentUpdate(nextProps, nextState, nextContext) {return this.state !== nextState || this.props !== nextProps || this.context != nextContext;}
+    componentWillUnmount() {}
+    toggle(){
+        this.setState({...this.state, open:!this.state.open})
+    }
+    render(){
+        const Div = motion.div;
+        const Image = motion.img;
+        return(
+           <Div
+              layout
+              layoutScroll={true}
+              style={{ width: "90%",padding: 20, display: 'flex', flexWrap: 'wrap', justifyContent: 'center', alignItems: 'center', height: "100%"}}
+              initial={{
+                  opacity:0,
+                  transition: {
+                      staggerChildren: .045
+                  }
+              }}
+              whileInView={{
+                  opacity: 1,
+                  transition: {
+                      staggerChildren: .045
+                  }
+              }}
+              
+              // initial={"hidden"}
+              // variants={containerVariants}
+              id="Skills">
+               {this.props.skillSet.map(({skill, link, progress, init}, index)=>{
+                   const pr = (
+                      <motion.svg>
+                      
+                      </motion.svg>
+                   )
+                   return (
+                      <Div
+                         className={"single-skill"}
+                         style={{
+                             background: "white",
+                             borderRadius: 10,
+                             display: 'flex',
+                             alignItems: 'center',
+                             justifyContent: 'center',
+                             margin: "5px 5px",
+                             overflow: 'hidden', height: 140, width: 110, boxShadow: "0 1px 7px 0"}}
+                         key={skill+"card"+index}
+                         viewport={{once:false, amount:0}}
+                         initial={"hidden"}
+                         whileInView={"visible"}
+                         whileHover={{scale:1.1}}
+                         variants={containerVariants}>
+                          <Div
+                             
+                             style={{display: 'flex',justifyContent: 'center', alignItems: 'center', flexDirection: 'column'}}
+                             layout
+                             variants={itemVariants}
+                             key={skill+"-img-container"}>
+                              <Image width={70} height={70} src={link} alt={skill+"-image"}/>
+                              <Text
+                                 key={skill+"text"}>
+                                  {skill}
+                              </Text>
+                          </Div>
+                          
+                       </Div>
+                   )
+               })}
+               
+           </Div>
+        )
+    }
+}
+Skills.propTypes = {
+    skillSet: PropTypes.arrayOf(object)
+    
+}
+export default Skills;

@@ -1,8 +1,9 @@
 import * as React from "react";
 import { motion } from "framer-motion";
+import "./Text.css";
 
 const Wrapper = (props) => {
-    return <span className="word-wrapper">{props.children}</span>;
+    return <span style={{}} className="word-wrapper">{props.children}</span>;
 };
 
 const tagMap = {
@@ -20,12 +21,14 @@ const AnimatedText = (props) => {
         hidden: {
             y: "200%",
             color: "#000",
+            rotate: 0,
             transition: {
-                type:'spring', bounce:0.6,
+                type:'spring', bounce:0.4,
                 ease: [0.455, 0.03, 0.515, 0.955], duration: 0.35 }
         },
         visible: {
             y: 0,
+            rotate:-360,
             color: props.color,
             transition: {
                 type:'spring', bounce:props.bounce, bounceDamping:0, bounceStiffness:0,
@@ -58,7 +61,8 @@ const AnimatedText = (props) => {
         default: fontSize=12; break;
     }
     return (
-        <Tag>
+        <span className={"motion-text"}>
+        <Tag style={props.style}>
             {words.map((word, index) => {
                 return (
                     <Wrapper key={word+index}>
@@ -72,8 +76,8 @@ const AnimatedText = (props) => {
                                     }}
                                     key={index}>
                                     <motion.span
-                                          style={{ display: "inline-block"}}
-                                          variants={item}>
+                                        style={{ display: "inline-block"}}
+                                        variants={item}>
                                             {element}
                                     </motion.span>
                                 </span>
@@ -83,6 +87,7 @@ const AnimatedText = (props) => {
                 );
             })}
         </Tag>
+   </span>
     );
 };
 
@@ -95,7 +100,7 @@ function MotionText(props) {
             return {
                 transition: {
                     staggerChildren:stagger,
-                    type: 'spring', bounce: 0.3, duration: 0.5
+                    type: 'spring', bounce: 0.2, duration: 0.4
                 }
             }
         }
@@ -107,11 +112,11 @@ function MotionText(props) {
             animate={props.visible ? "visible" : "hidden"}
             variants={container}
             custom={props.custom}
-            style={{display: 'flex'}}
+            style={{display: 'block'}}
         >
-            <div className="container">
+            <div className="container animated-text">
                 {props.textItems.map((item, index) => {
-                    return <AnimatedText bounce={props.bounce} color={props.color} duration={props.duration}  {...item} key={index} />;
+                    return <AnimatedText style={item.style?item.style:{}} bounce={props.bounce} color={props.color} duration={props.duration}  {...item} key={index} />;
                 })}
             </div>
 

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
-import skillsArr, {Skills, initSkillsArr} from "./Skills";
+import Skills, {skillsArr} from "./Skills";
 import {motion, useInView} from 'framer-motion'
 
 function SkillsInView(props){

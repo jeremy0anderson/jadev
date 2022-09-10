@@ -62,9 +62,9 @@ const projects = [
 ];
 
 export function Projects(){
-      const [state, setState] = React.useState({
-            blurred:true
-      })
+      // const [state, setState] = React.useState({
+      //       blurred:true
+      // })
         const mapped = projects.map((project, index) => {
             const { name, desc, image, demo, source } = project;
 

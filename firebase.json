@@ -1,16 +1,10 @@
 {
-  "hosting": {
-    "public": "./build",
+  "functions": {
     "ignore": [
-      "firebase.json",
-      "**/.*",
-      "**/node_modules/**",
-      "**/src/.env",
-      "src/.env",
-      "./src/.env",
-      "*/src/.env",
-      ".env"
-
+      "node_modules",
+      ".git",
+      "firebase-debug.log",
+      "firebase-debug.*.log"
     ]
   }
 }

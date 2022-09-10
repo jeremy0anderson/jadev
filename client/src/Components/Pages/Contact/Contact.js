@@ -1,14 +1,10 @@
 import React, {Component} from 'react';
-import {Spacer,Button, Text, Container as NContainer, Input, Textarea} from '@nextui-org/react';
-import {Card, Box, TextField, Container} from '@mui/material';
+import {Spacer,Button, Text, Input, Textarea} from '@nextui-org/react';
 import {init, send} from '@emailjs/browser';
 import {TailSpin} from "react-loader-spinner";
 import {motion} from 'framer-motion';
-import {Components} from 'ja-ui-react';
-import {default as MotionText} from '../../Motion/Text';
-import * as M from "@mui/material";
 import * as I from "@mui/icons-material";
-import skillsArr, {Skills} from "../About/Skills";
+import MotionText from "../../Motion/Text";
 
 init(process.env.REACT_APP_PUBLIC_KEY);
 
@@ -27,7 +23,11 @@ class Contact extends Component {
             nameError:false,
             messageError:false,
             subjectError:false,
-            replay:true
+            replay:true,
+            window: {
+                width: window.innerWidth,
+                height: window.innerHeight
+            }
         }
         this.handleNameChange = this.handleNameChange.bind(this);
         this.handleMessageChange = this.handleMessageChange.bind(this);
@@ -38,17 +38,33 @@ class Contact extends Component {
         this.handleEmailBlur = this.handleEmailBlur.bind(this);
         this.handleSubjectBlur = this.handleSubjectBlur.bind(this);
         this.handleMessageBlur = this.handleMessageBlur.bind(this);
+        this.handleResize=this.handleResize.bind(this);
     }
 
     //lifecycle
     shouldComponentUpdate(nextProps, nextState) {
         return this.props !== nextProps || this.state !== nextState;
     }
-    componentDidMount() {}
-    componentDidUpdate(prevProps, prevState) {}
-    componentWillUnmount() {}
+    componentDidMount() {
+        window.addEventListener('resize', this.handleResize);
+        
+    }
+    componentDidUpdate(prevProps, prevState) {
+    }
+    componentWillUnmount() {
+        window.removeEventListener('resize', this.handleResize);
+    }
 
     //event handlers
+    handleResize(){
+        this.setState({
+            ...this.state,
+            window:{
+                width: window.innerWidth,
+                height: window.innerHeight
+            }
+        })
+    }
     handleNameBlur(e){
         this.setState({
             ...this.state,
@@ -56,7 +72,6 @@ class Contact extends Component {
         })
     }
     handleEmailBlur(e){
-        console.log(e.target.value);
         const rx = /^([-!#-'*+/-9=?A-Z^-~]+(\.[-!#-'*+/-9=?A-Z^-~]+)*|"([]!#-[^-~ \t]|(\\[\t -~]))+")@([-!#-'*+/-9=?A-Z^-~]+(\.[-!#-'*+/-9=?A-Z^-~]+)*|\[[\t -Z^-~]*])$/;
         if (rx.test(e.target.value)){
              return  this.setState({
@@ -153,23 +168,16 @@ class Contact extends Component {
 
     //render
     render() {
-        const container = {
-            hidden: {
-                opacity:0
-            },
-            visible: {
-                opacity: 1,
-                transition: {
-                    staggerChildren: 0.035
-                }
-            }
-        };
         return (
             <motion.div
-                style={{zIndex:1000, display: 'flex', width: "auto", flexDirection:'column', overflow:'visible', alignItems:'center', alignContent:'center', height: "calc(100% - 60px)", position: 'relative'}}>
-
+                style={{zIndex:998, display: 'flex', width: "auto", flexDirection:'column', overflow:'visible', alignItems:'center', alignContent:'center', height: "100%",top: 0,position: 'relative'}}>
+                {/*<motion.div*/}
+                {/*   style={{display: 'flex',position: 'relative', width: "100%", justifyContent: 'center', alignItems: 'center'}}>*/}
+                {/*    <MotionText color={"rgb(0,0,0)"} textItems={[{type: "h4", text: "Send me a message"}]} visible={true} bounce={0} custom={0.014} duration={0.3}/>*/}
+                {/*</motion.div>*/}
                 <motion.div
                     style={{
+                        width: '90%',
                         maxWidth: 800,
                         display: 'flex',
                         justifyContent: 'center',
@@ -190,12 +198,13 @@ class Contact extends Component {
                         <motion.form
                             style={{width: '100%', display: 'flex', flexDirection: "column"}}
                             id={"Contact-form"}
-                            onSubmit={this.handleSubmit}
-                            component={"form"}>
+                            onSubmit={this.handleSubmit}>
                             <motion.div
                                   id={"contact-fields"}
                                   style={{
                                         width: "auto",
+                                        padding: 2,
+                                        overflow:'hidden',
                                         display:'flex',
                                         justifyContent: "center",
                                 }}>
@@ -247,7 +256,7 @@ class Contact extends Component {
                             <motion.div
                                 style={{display:'flex', justifyContent: "center", width: "100%"}}>
                                 <Spacer className={"textarea-spacer"} x={1} y={0}/>
-                                <div style={{display: 'flex', flexDirection: "column",width: "100%"}}>
+                                <motion.div style={{display: 'flex', flexDirection: "column",width: "100%", padding:2}}>
                                 
                                 <Textarea
                                     bordered
@@ -255,13 +264,13 @@ class Contact extends Component {
                                     required={true}
                                     onBlur={this.handleMessageBlur}
                                     style={{fontFamily: "sans-serif", width: "100%"}}
-                                    minRows={3}
+                                    minRows={4}
                                     value={this.state.message}
                                     label={"Message"}
                                     helperText={this.state.messageError?"Subject required":" "}
                                     helperColor={"error"}
                                     color={this.state.messageError?"error":"primary"}/>
-                                </div>
+                                </motion.div>
                                 <Spacer className={"textarea-spacer"} x={1} y={0}/>
                             </motion.div>
                             <Text css={{color: "green", margin: 5}}>{this.state.resMessage}</Text>
