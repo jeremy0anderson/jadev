@@ -5,7 +5,7 @@ import cert from '../../../assets/images/coding-bootcamp-full-stack-developer-ce
 import {motion, useScroll, useTransform} from 'framer-motion';
 import {default as MotionText} from "../../Motion/Text";
 import * as I from 'react-icons/io5';
-import Contact from "../Contact/Contact";
+import Contact, {ContactPage} from "../Contact/Contact";
 import About, {Bio} from "../About/About";
 import Skills, {skillsArr} from "../About/Skills";
 
@@ -135,7 +135,7 @@ Card.propTypes = {
    distance: PropTypes.number.isRequired,
    headerText: PropTypes.string.isRequired
 }
-const Button = motion.button;
+
 class Home extends Component {
     constructor(props) {
         super(props);
@@ -170,18 +170,15 @@ class Home extends Component {
                    <Div
                      initial={{y: "-100%",}}
                      animate={{y: 0, transition:{duration:0.5, bounce: 0.2, type:'spring'}}}
-                     style={{
-                        justifyContent: 'center', alignItems: 'center',
-                        display: 'flex', flexDirection: 'column', width: "100vw", height: "auto", position: 'absolute', top: 90}}>
+                     style={{display: 'flex', flexDirection: 'column', width: "100vw", height: "calc(50vh - 60px)", position: 'absolute', top: 60}}>
                       <Avatar
                          transition={{duration: 0.5}}
                          whileTap={{scale:1, borderRadius: "40%", transition: {duration: 0.2}}}
                          whileHover={{scale:1.1, borderRadius: "40%", transition:{duration: 0.2}}}
                          style={{
-                            display: 'flex', justifyContent: 'center', alignItems: 'center',
                             boxShadow: "0 2px 7px -1px",
-                            top: "calc(40% - 75px)",
-                            // left: "calc(50% - 90px)",
+                            top: "calc(50% - 90px)",
+                            left: "calc(50% - 90px)",
                             position: 'relative',
                             borderRadius: "35%",
                             zIndex:998,
@@ -192,12 +189,11 @@ class Home extends Component {
                       <Div
                          whileInView={{opacity:1}}
                          style={{
-                            width: "90%",
-                            height: 'auto',
-                            top: "60%",
+                            width: "100%",
+                            height: 200,
+                            top: "calc(50% - 100px)",
                             x:0,
                             margin:0,
-                            flexDirection: "column",
                             display: 'inline-flex',
                             justifyContent: 'center',
                             position: 'relative',
@@ -205,18 +201,17 @@ class Home extends Component {
                             alignItems: 'center'}}
                          transition={{duration:0.3}}
                          initial={{opacity:0}}>
-                         <MotionText textItems={[
+                         <MotionText color={"#000"} textItems={[
                             {
                                type: "h3",
                                text: "Hi, I'm Jeremy.",
+                               style:{marginBottom:20}
                             },
                             {
-                               type: "h6",
+                               type: "h5",
                                text: "Full stack Web Developer | SLC, UT",
                             }
                          ]} visible={this.state.visible} bounce={0.1} custom={0.025} duration={0.4}/>
-                         <Div whileInView={{width: "100%"}} transition={{duration: 1}} style={{background: "black", height: 4, marginTop: 15, marginBottom: 15}} intial={{width: 0}}/>
-                         <Bio/>
                       </Div>
                       
                       <Div whileInView={{
@@ -228,7 +223,7 @@ class Home extends Component {
                             times: [0, 0.5, 1],
                             repeat: Infinity,
                             repeatDelay:0
-                         }} style={{opacity: 0, left: "calc(50vw - 30px)",position: 'absolute',top: "75vh", width: 50, margin:5, padding:0}}>
+                         }} style={{opacity: 0, left: "calc(50vw - 25px)",position: 'absolute',top: "75vh", width: 50, margin:5, padding:0}}>
                          <I.IoChevronDownOutline size={"50px"}/>
                       </Div>
                    </Div>
@@ -250,18 +245,20 @@ class Home extends Component {
                       initial={{y:0}}
                       whileInView={{y:0}}
                       transition={{duration: 0.6}}
-                      style={{position: 'relative', top: 15,height: "auto", display: 'flex',  flexDirection: "column",justifyContent: 'center', alignItems: 'center'}}
+                      style={{position: 'relative', top: 0,height: "auto", display: 'flex',  flexDirection: "column",justifyContent: 'center', alignItems: 'center'}}
                    >
                       <MotionText color={"#000"} textItems={[
                          {
                             type: "h4",
-                            text: "Skills",
-                            style:{
-                               textGradient: "45deg, $yellow600 -20%, $red600 100%",
+                            text: "About / Skills",
+                            style: {
+                                  margin: "40px 0"
                             }
                          },
                       ]} visible={this.state.aboutSection} bounce={0} custom={0.035} duration={0.3}/>
+                         <Bio/>
                       <Skills skillSet={skillsArr}/>
+                      
                    </Div>
                 </Div>
                 <DividerLine top={2}/>
@@ -269,32 +266,12 @@ class Home extends Component {
                    layout
                    id={"Contact-section"}
                    viewport={{amount:0.01, once:true}}
-                   whileInView={{x: 0}}
+                   whileInView={{x:0, y: -50}}
                    transition={{duration: 0.4}}
                    initial={{ width: "100vw", position: "relative", top: 0}}
-                   style={{display: 'flex', flexDirection: "column",height: "100%", justifyContent: 'center', overflow:'hidden'}}>
+                   style={{display: 'flex', flexDirection: "column",height: "auto", justifyContent: 'center', overflow:'visible', marginBottom: 80}}>
                       {/*// background: "linear-gradient(90deg, hsla(12, 90%, 50%, 0.9) -20%, hsla(45, 90%, 50%, 0.9) 120%)"}}>*/}
-                   <Div
-                      layout
-                      initial={{y:-50}}
-                      whileInView={{y:0}}
-                      transition={{duration: 0.6}}
-                      style={{position: 'relative', top: 20,height: "auto"}}
-                      onViewportLeave={()=>{this.setState({...this.state,contactSection:false})}}
-                      onViewportEnter={()=>{this.setState({...this.state,contactSection:true})}}
-                   >
-                      <MotionText color={"#000"} textItems={[
-                         {
-                            type: "h2",
-                            text: "Contact",
-                         },
-                         {
-                            type: "h6",
-                            text: "Send me a message"
-                         }
-                      ]} visible={this.state.contactSection} bounce={0} custom={0.035} duration={0.3}/>
-                      <Contact/>
-                   </Div>
+                  <ContactPage/>
                 </Div>
              </Div>
           )

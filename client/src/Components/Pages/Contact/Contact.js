@@ -300,3 +300,27 @@ class Contact extends Component {
 
 
 export default Contact;
+export function ContactPage(){
+    const Div = motion.div;
+    return (
+          <Div
+                layout
+                initial={{y:-50}}
+                whileInView={{y:90}}
+                transition={{duration: 0.6}}
+                style={{position: 'relative', top: 20,height: "auto"}}
+          >
+              <MotionText color={"#000"} textItems={[
+                  {
+                      type: "h2",
+                      text: "Contact",
+                  },
+                  {
+                      type: "h6",
+                      text: "Send me a message"
+                  }
+              ]} visible={true} bounce={0} custom={0.035} duration={0.3}/>
+              <Contact/>
+          </Div>
+    )
+}

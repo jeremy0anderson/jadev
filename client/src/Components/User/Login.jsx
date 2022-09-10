@@ -44,7 +44,7 @@ function Login(){
           transition={{duration: 0.6, type:'spring', bounce: 0.2}}
           animate={{x: 0}}
           initial={{x:"100%"}}
-            style={{padding: 25,height: "100%",position: 'absolute',width: "100vw", display: 'flex', justifyContent: 'center', alignItems: "center", top: 0}}>
+            style={{padding: 25,height: "100%",position: 'absolute',width: "100%", display: 'flex', justifyContent: 'center', alignItems: "center", top: "calc(50vh - 100px)"}}>
            <Container
                 style={{justifySelf: "center",alignSelf: 'center',position: 'absolute',display: 'flex', alignItems: 'center', justifyContent: 'center'}}
                 xs>

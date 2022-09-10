@@ -1,7 +1,6 @@
 import * as React from "react";
 import { motion } from "framer-motion";
 import "./Text.css";
-import {Text} from "@nextui-org/react";
 
 const Wrapper = (props) => {
     return <span style={{}} className="word-wrapper">{props.children}</span>;
@@ -63,7 +62,7 @@ const AnimatedText = (props) => {
     }
     return (
    <span className={"motion-text"} style={{display: 'flex', justifyContent: "center", alignItems: 'center'}}>
-        <Text {...Tag} css={props.style}>
+        <Tag style={props.style}>
             {words.map((word, index) => {
                 return (
                     <Wrapper key={word+index}>
@@ -87,7 +86,7 @@ const AnimatedText = (props) => {
                     </Wrapper>
                 );
             })}
-        </Text>
+        </Tag>
    </span>
     );
 };
@@ -114,7 +113,7 @@ function MotionText(props) {
             custom={props.custom}
             style={{display: 'flex', justifyContent: 'center', width:"100%"}}
         >
-            <div className="container animated-text" style={{width: "100%"}}>
+            <div className="container animated-text">
                 {props.textItems.map((item, index) => {
                     return <AnimatedText style={item.style?item.style:{}} bounce={props.bounce} color={props.color} duration={props.duration}  {...item} key={index} />;
                 })}
