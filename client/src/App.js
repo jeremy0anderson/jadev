@@ -58,10 +58,10 @@ class App extends React.Component{
                }]
             return(
                   <div style={{width: "auto"}}>
-                              <Navigation anchor={"top"} items={items}  menuBackground={'rgb(40,40,40)'} background={'rgb(20, 20, 20)'}>
+                              {/*<Navigation anchor={"top"} items={items}  menuBackground={'rgb(40,40,40)'} background={'rgb(20, 20, 20)'}>*/}
                               
-                              </Navigation>
-                     
+                              {/*</Navigation>*/}
+                        <Navbar/>
                         <Routes>
                               <Route path={"/"} element={<Home/>}/>
                               <Route path={"/about"} element={<AboutPage/>}/>

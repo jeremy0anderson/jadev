@@ -10,18 +10,28 @@
     width: 100%;height: 100%;
     display: flex; justify-content: left; align-items: center; align-content: center;
 }
-@media(max-width: 650px) {
-    #navbar-drawer-toggle {
-        display: flex;
+#expand-menu{
+    display: flex!important;
+}
+@media(min-width: 650px) {
+    #expand-menu{
+        display: flex!important;
     }
-    #navbar-menu-noDrawer{
-        display: none;
+
+}
+@media( max-width: 960px){
+    #expand-menu{
+        display: none!important;
     }
 }
-
-#Navbar {
+@media(max-width: 1280px){
 }
+@media(max-width: 1400px){
 
+}
+@media(max-width: 1920px){
+
+}
 /*@keyframes gradient {*/
 /*    0% {*/
 /*        background-position: 0% 50%;*/
