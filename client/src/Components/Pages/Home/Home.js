@@ -1,13 +1,14 @@
 import React, {Component, useRef, useState,useEffect} from 'react';
 import PropTypes from 'prop-types';
 import pfp from "../../../assets/images/pfp.webp";
-import cert from '../../../assets/images/coding-bootcamp-full-stack-developer-certificate.1.webp';
+// import cert from '../../../assets/images/coding-bootcamp-full-stack-developer-certificate.1.webp';
 import {motion, useScroll, useTransform} from 'framer-motion';
 import {default as MotionText} from "../../Motion/Text";
 import * as I from 'react-icons/io5';
-import Contact, {ContactPage} from "../Contact/Contact";
-import About, {Bio} from "../About/About";
+import {ContactPage} from "../Contact/Contact";
+import {Bio} from "../About/About";
 import Skills, {skillsArr} from "../About/Skills";
+import {Text, Tooltip} from "@nextui-org/react";
 
 const draw = {
    hidden: { pathLength: 0, opacity: 0},
@@ -30,16 +31,16 @@ function DividerLine(props){
    })
    
    useEffect(()=>{
-      window.addEventListener('resize', ()=>{
+      window.addEventListener('resize', (e)=>{
          setState({
-            width: window.innerWidth,
-            height: window.innerHeight
+            width: e.target.innerWidth,
+            height: e.target.innerHeight
          })
       })
-      return  window.removeEventListener('resize', ()=>{
+      return  window.removeEventListener('resize', (e)=>{
          setState({
-            width: window.innerWidth,
-            height: window.innerHeight
+            width: e.target.innerWidth,
+            height: e.target.innerHeight
          })
       })
       
@@ -53,7 +54,7 @@ function DividerLine(props){
          initial="hidden"
          strokeWidth="4px"
          whileInView="visible"
-         stroke={"#000"}
+         stroke={"#e3e3e3"}
          viewport={{amount:0, once:false}}
          style={{position: 'absolute', top: `calc(${props.top}00vh + 5px)`, left: 0, margin: 0,}}
       >
@@ -62,7 +63,7 @@ function DividerLine(props){
             y1={"calc(100vh + 4px)"}
             x2={"100vw"}
             y2={"calc(100vh + 4px)"}
-            stroke={"#000"}
+            stroke={"#e5e5e5"}
             variants={draw}
             custom={0}
          />
@@ -70,71 +71,7 @@ function DividerLine(props){
    )
 }
 
-function Line(props){
-   return(
-      <div style={{width: "100vw", height: "101vh"}}>
-      <motion.svg
-      width={`${window.innerWidth}`}
-      height={window.innerHeight*2}
-      viewBox={`0 0 ${window.innerWidth} ${window.innerHeight*2}`}
-      initial="hidden"
-      strokeWidth="2px"
-      fill={"#000"}
-      whileInView="visible"
-      viewport={{amount:0, once:false}}
-      style={{position: 'absolute', top: 0, left: 0, margin: 0,}}
-   >
-      <motion.line
-         x1={0}
-         y1="calc(100vh - 2.5px)"
-         x2={`${window.innerWidth/2}`}
-         y2="calc(100vh - 2.5px)"
-         stroke="#00cc88"
-         variants={draw}
-         custom={0}
-      />
-   </motion.svg>
-      </div>
-   )
-}
-
 const Div = motion.div;
-const variants = {
-   offscreen: {
-      y: 500,
-      opacity:0,
-   },
-   onscreen: {
-      y: 0,
-      opacity:1,
-      transition: {
-         type: "spring",
-         bounce: 0.4,
-         duration: 0.8
-      }
-   }
-};
-function useParallax(value, distance) {
-   return useTransform(value, [0, 1], [-distance, distance]);
-}
-function Card(props) {
-   const ref = useRef(null);
-   const { scrollYProgress } = useScroll({ target: ref });
-   const y = useParallax(scrollYProgress, props.distance);
-   
-   return (
-      <section>
-         <div ref={ref}>
-            {props.children}
-         </div>
-         <motion.h2 style={{ y }}>{`${props.headerText}`}</motion.h2>
-      </section>
-   );
-};
-Card.propTypes = {
-   distance: PropTypes.number.isRequired,
-   headerText: PropTypes.string.isRequired
-}
 
 class Home extends Component {
     constructor(props) {
@@ -164,20 +101,19 @@ class Home extends Component {
                    onViewportLeave={()=>this.setState({...this.state,visible:false})}
                    onViewportEnter={()=>this.setState({...this.state,visible:true})}
                    id={"SelfSection"}
-                   style={{width: "100vw", height: "101vh"}}>
+                   style={{width: "100vw", height: "100%"}}>
                   
                          {/* background: "linear-gradient(112deg, hsla(215, 90%, 10%,0.8) -120%, hsla(280, 100%, 40%, 0.9) 120%)"}}>*/}
                    <Div
                      initial={{y: "-100%",}}
                      animate={{y: 0, transition:{duration:0.5, bounce: 0.2, type:'spring'}}}
-                     style={{display: 'flex', flexDirection: 'column', width: "100vw", height: "calc(50vh - 60px)", position: 'absolute', top: 60}}>
+                     style={{display: 'flex', flexDirection: 'column', width: "100vw", height: "50vvh", position: 'relative' }}>
                       <Avatar
                          transition={{duration: 0.5}}
                          whileTap={{scale:1, borderRadius: "40%", transition: {duration: 0.2}}}
                          whileHover={{scale:1.1, borderRadius: "40%", transition:{duration: 0.2}}}
                          style={{
-                            boxShadow: "0 2px 7px -1px",
-                            top: "calc(50% - 90px)",
+                            boxShadow: "0 2px 7px -1px black",
                             left: "calc(50% - 90px)",
                             position: 'relative',
                             borderRadius: "35%",
@@ -186,12 +122,13 @@ class Home extends Component {
                          width={180} height={180}
                          src={pfp}
                          alt={"avatar"}/>
+                         
                       <Div
                          whileInView={{opacity:1}}
                          style={{
                             width: "100%",
                             height: 200,
-                            top: "calc(50% - 100px)",
+                            top: "calc(50vh - 200px)",
                             x:0,
                             margin:0,
                             display: 'inline-flex',
@@ -201,7 +138,7 @@ class Home extends Component {
                             alignItems: 'center'}}
                          transition={{duration:0.3}}
                          initial={{opacity:0}}>
-                         <MotionText color={"#000"} textItems={[
+                         <MotionText color={"#f1f1f1"} textItems={[
                             {
                                type: "h3",
                                text: "Hi, I'm Jeremy.",
@@ -212,6 +149,7 @@ class Home extends Component {
                                text: "Full stack Web Developer | SLC, UT",
                             }
                          ]} visible={this.state.visible} bounce={0.1} custom={0.025} duration={0.4}/>
+                         
                       </Div>
                       
                       <Div whileInView={{
@@ -247,7 +185,7 @@ class Home extends Component {
                       transition={{duration: 0.6}}
                       style={{position: 'relative', top: 0,height: "auto", display: 'flex',  flexDirection: "column",justifyContent: 'center', alignItems: 'center'}}
                    >
-                      <MotionText color={"#000"} textItems={[
+                      <MotionText color={"#e7e7e7"} textItems={[
                          {
                             type: "h4",
                             text: "About / Skills",

@@ -5,6 +5,7 @@ import {TailSpin} from "react-loader-spinner";
 import {motion} from 'framer-motion';
 import * as I from "@mui/icons-material";
 import MotionText from "../../Motion/Text";
+import {Text as MText} from '../../Text/Text';
 
 init(process.env.REACT_APP_PUBLIC_KEY);
 
@@ -72,6 +73,7 @@ class Contact extends Component {
         })
     }
     handleEmailBlur(e){
+        //eslint-disable-next-line
         const rx = /^([-!#-'*+/-9=?A-Z^-~]+(\.[-!#-'*+/-9=?A-Z^-~]+)*|"([]!#-[^-~ \t]|(\\[\t -~]))+")@([-!#-'*+/-9=?A-Z^-~]+(\.[-!#-'*+/-9=?A-Z^-~]+)*|\[[\t -Z^-~]*])$/;
         if (rx.test(e.target.value)){
              return  this.setState({
@@ -250,7 +252,7 @@ class Contact extends Component {
                                       helperText={this.state.subjectError?"Subject required":" "}
                                       contentLeft={<I.Subject/>}
                                       helperColor={"error"}/>
-                                <Spacer x={1} y={0}/>
+                                <Spacer x={1} y={1}/>
                             </motion.div>
                             <Spacer x={0} y={1}/>
                             <motion.div
@@ -267,7 +269,7 @@ class Contact extends Component {
                                     minRows={4}
                                     value={this.state.message}
                                     label={"Message"}
-                                    helperText={this.state.messageError?"Subject required":" "}
+                                    helperText={this.state.messageError?"Message required":" "}
                                     helperColor={"error"}
                                     color={this.state.messageError?"error":"primary"}/>
                                 </motion.div>
@@ -281,6 +283,7 @@ class Contact extends Component {
                                     justifyContent: "center",
                                     width: "100%",
                                 }}>
+                                <Spacer className={"textarea-spacer-column"} x={0} y={1}/>
                                 <Spacer className={"textarea-spacer"} x={1} y={1}/>
                                 <Button
                                     disabled={this.state.emailError || this.state.nameError || this.state.messageError || this.state.subjectError}
@@ -305,21 +308,17 @@ export function ContactPage(){
     return (
           <Div
                 layout
-                initial={{y:-50}}
-                whileInView={{y:90}}
-                transition={{duration: 0.6}}
+                initial={{y:-100, opacity: 0}}
+                whileInView={{y:90, opacity: 1}}
+                transition={{duration: 0.3}}
                 style={{position: 'relative', top: 20,height: "auto"}}
           >
-              <MotionText color={"#000"} textItems={[
+              <MotionText color={"#eaeaea"} textItems={[
                   {
-                      type: "h2",
-                      text: "Contact",
+                      type: "h3",
+                      text: "Send me an email",
                   },
-                  {
-                      type: "h6",
-                      text: "Send me a message"
-                  }
-              ]} visible={true} bounce={0} custom={0.035} duration={0.3}/>
+              ]} visible={true} bounce={0} custom={0.055} duration={0.3}/>
               <Contact/>
           </Div>
     )

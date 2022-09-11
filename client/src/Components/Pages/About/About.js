@@ -1,7 +1,6 @@
 import React, {useState} from 'react';
-import PropTypes from 'prop-types';
 import Skills, {skillsArr} from "./Skills";
-import {motion, useInView} from 'framer-motion'
+import {motion} from 'framer-motion'
 import {Spacer, Text} from '@nextui-org/react';
 import {IoChevronDown, IoLogoGithub, IoLogoLinkedin, IoMail} from "react-icons/io5";
 import {Link} from "react-router-dom";
@@ -68,19 +67,6 @@ export const Bio = (props)=>{
       
       )
 }
-function SkillsInView(props){
-      const ref = React.useRef(null);
-      const inView = useInView(ref, {once: false});
-      
-      
-      
-      return(
-            <motion.div
-                  ref={ref}>
-                  <Skills skillSet={skillsArr}/>
-            </motion.div>
-      )
-}
 
 class About extends React.Component {
     constructor(props) {
@@ -98,20 +84,9 @@ class About extends React.Component {
     componentDidUpdate(prevProps, prevState) {}
     componentWillUnmount() {}
     render() {
-          const container = {
-                hidden: {
-                      opacity:0
-                },
-                visible: {
-                      opacity: 1,
-                      transition: {
-                            staggerChildren: 0.075
-                      }
-                }
-          };
         return (
            <motion.div
-                style={{zIndex:1000, display: 'flex', flexDirection:'column', overflow:'hidden', alignItems:'center', alignContent:'center', height: "calc(100% - 60px)", position: 'relative'}}>
+                style={{zIndex:1000, display: 'flex', flexDirection:'column', overflow:'hidden', alignItems:'center', alignContent:'center', height: "auto", position: 'relative'}}>
             <motion.div
                 style={{
                     display: 'flex',

@@ -1,127 +1,64 @@
-import * as React from "react";
-import { motion } from "framer-motion";
-import "./Text.css";
+import { FC } from "react";
+import { motion, Variants, HTMLMotionProps } from "framer-motion";
 
-const Wrapper = (props) => {
-    return <span style={{}} className="word-wrapper">{props.children}</span>;
-};
+interface TextProps extends HTMLMotionProps<"div"> {
+    motionElement?: any;
+    text: string;
+    delay?: number;
+    visible: boolean;
+    duration?: number;
+}
 
-const tagMap = {
-    p: "p",
-    h1: "h1",
-    h2: "h2",
-    h3: "h3",
-    h4: "h4",
-    h5: "h5",
-    h6: "h6"
-};
+const MotionText: FC<TextProps> =
+    ({text, visible, ...props}: TextProps) => {
+    const letters = Array.from(text);
 
-const AnimatedText = (props) => {
-    const item = {
+    const container: Variants = {
         hidden: {
-            y: "200%",
-            color: "#000",
-            rotate: 0,
-            transition: {
-                type:'spring', bounce:0.4,
-                ease: [0.455, 0.03, 0.515, 0.955], duration: 0.35 }
+            opacity: 0
         },
-        visible: {
-            y: 0,
-            rotate:-360,
-            color: props.color,
-            transition: {
-                type:'spring', bounce:props.bounce, bounceDamping:0, bounceStiffness:0,
-                ease: [0, 0.37, 0.715, 1], duration: props.duration }
-        }
+        visible: (i: number = 1) => ({
+            opacity: 1,
+            transition: { staggerChildren: 0.05, delayChildren: i * props?.delay }
+        })
     };
 
-    const splitWords = props.text.split(" ");
-
-    const words = [];
-
-    for (const [, item] of splitWords.entries()) {
-        words.push(item.split(""));
-    }
-
-    words.map((word) => {
-        return word.push("\u00A0");
-    });
-
-    const Tag = tagMap[props.type];
-    let fontSize;
-    switch(props.type){
-        case "h1":fontSize=70; break;
-        case "h2":fontSize=60; break;
-        case "h3":fontSize=50; break;
-        case "h4":fontSize=35; break;
-        case "h5":fontSize=25; break;
-        case "h6":fontSize=18; break;
-        case "p":fontSize=12; break;
-        default: fontSize=12; break;
-    }
-    return (
-        <span className={"motion-text"}>
-        <Tag style={props.style}>
-            {words.map((word, index) => {
-                return (
-                    <Wrapper key={word+index}>
-                        {words[index].flat().map((element, index) => {
-                            return (
-                                <span
-                                    style={{
-                                        fontSize,
-                                        overflow: "hidden",
-                                        display: "inline-block"
-                                    }}
-                                    key={index}>
-                                    <motion.span
-                                        style={{ display: "inline-block"}}
-                                        variants={item}>
-                                            {element}
-                                    </motion.span>
-                                </span>
-                            );
-                        })}
-                    </Wrapper>
-                );
-            })}
-        </Tag>
-   </span>
-    );
-};
-
-function MotionText(props) {
-    const container = {
-        hidden: {
-
+    const item: Variants = {
+        visible: {
+            opacity: 1,
+            y: 0,
+            transition: {
+                type: "spring",
+                damping: 12,
+                stiffness: 200
+            }
         },
-        visible:(stagger)=> {
-            return {
-                transition: {
-                    staggerChildren:stagger,
-                    type: 'spring', bounce: 0.2, duration: 0.4
-                }
+        hidden: {
+            opacity: 0,
+            y: 20,
+            transition: {
+                type: "spring",
+                damping: 12,
+                stiffness: 200
             }
         }
     };
-    return (
-        <motion.div
-            className="App"
-            initial="hidden"
-            animate={props.visible ? "visible" : "hidden"}
-            variants={container}
-            custom={props.custom}
-            style={{display: 'block'}}
-        >
-            <div className="container animated-text">
-                {props.textItems.map((item, index) => {
-                    return <AnimatedText style={item.style?item.style:{}} bounce={props.bounce} color={props.color} duration={props.duration}  {...item} key={index} />;
-                })}
-            </div>
 
-        </motion.div>
+    return (
+        <props.motionElement
+            style={{ display: "flex", overflow: "hidden" }}
+            variants={container}
+            initial="hidden"
+            animate={visible ? "visible" : "hidden"}
+            {...props}
+        >
+            {letters.map((letter, index) => (
+                <motion.span key={index} variants={item}>
+                    {letter === " " ? "\u00A0" : letter}
+                </motion.span>
+            ))}
+        </props.motionElement>
     );
-}
+};
 
 export default MotionText;

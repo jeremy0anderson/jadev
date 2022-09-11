@@ -1,0 +1,30 @@
+#nav-horizontal-menu{
+    display:flex!important;
+}
+#expand-menu{
+    display:none!important;
+}
+.brand-right{
+
+}
+#Brand{
+    display:flex!important;
+    position: absolute!important;
+    margin-inline:15px!important;
+}
+
+
+
+/*mobile device dependencies*/
+
+@media (max-width: 600px) {
+    #nav-horizontal-menu{
+        display:none!important;
+    }
+    #expand-menu{
+        display:flex!important;
+    }
+    .brand-right{
+        right:10px!important;
+    }
+}

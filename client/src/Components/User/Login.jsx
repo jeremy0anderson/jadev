@@ -1,6 +1,6 @@
 import {useMutation, gql} from '@apollo/client';
 import {motion, useInView} from 'framer-motion';
-import {Input, Spacer, Text, Container, Button} from '@nextui-org/react';
+import {Input, Spacer, Text, Container, Button, NextUIProvider, createTheme} from '@nextui-org/react';
 import React, {useState} from "react";
 import {useNavigate} from "react-router-dom";
 import * as Io from 'react-icons/io5';
@@ -44,8 +44,8 @@ function Login(){
           transition={{duration: 0.6, type:'spring', bounce: 0.2}}
           animate={{x: 0}}
           initial={{x:"100%"}}
-            style={{padding: 25,height: "100%",position: 'absolute',width: "100%", display: 'flex', justifyContent: 'center', alignItems: "center", top: "calc(50vh - 100px)"}}>
-           <Container
+            style={{padding: 25,height: "100%",position: 'absolute',width: "100%", display: 'flex', justifyContent: 'center', alignItems: "center", top: 90}}>
+           <motion.div
                 style={{justifySelf: "center",alignSelf: 'center',position: 'absolute',display: 'flex', alignItems: 'center', justifyContent: 'center'}}
                 xs>
                <motion.form
@@ -66,8 +66,8 @@ function Login(){
                    <Spacer x={0} y={1.75}/>
                    <Input
                         contentRight={<Io.IoMailOutline/>}
-                        css={{width: "90%"}}
-                        color={"warning"}
+                        css={{width: "auto"}}
+                        color={"primary"}
                         onChange={(e)=>setState({...state,email:e.target.value})}
                         label={"Email"}
                         placeholder={"email@example.com"}
@@ -104,7 +104,7 @@ function Login(){
                           >Sign Up</Button>
                    </div>
                </motion.form>
-           </Container>
+           </motion.div>
        </motion.div>
     )
 }

@@ -1,8 +1,7 @@
 import {forwardRef} from "react";
-import {Card as NCard} from '@nextui-org/react';
 import * as M from '@mui/material';
 import {motion,useTransform, useMotionValue} from 'framer-motion';
-import {Card as MCard, IconButton, Button as MButton} from '@mui/material';
+import {IconButton, Button as MButton} from '@mui/material';
 import {Person} from "@mui/icons-material";
 
 

@@ -1,85 +1,81 @@
-
 import React from "react";
-import {Dropdown, Navbar as Nav, Text} from "@nextui-org/react";
+import {Text} from "@nextui-org/react";
+import {Text as MText} from '../Text/Text';
 import {motion, MotionConfig} from 'framer-motion';
-import {FiMenu} from "react-icons/fi";
 import {CgMenu} from "react-icons/cg";
 import {Link} from "react-router-dom";
-
-class Drawer extends React.Component{
-    constructor(props) {
-        super(props);
-        this.state= {
-            open: false
-        }
-    }
-    componentDidMount() {}
-    shouldComponentUpdate(nextProps, nextState, nextContext) {return this.props!==nextProps || this.state!==nextState || this.context!==nextContext;}
-    componentDidUpdate(prevProps, prevState, snapshot) {
-    
-    }
-    componentWillUnmount() {}
-    
-    toggle(){
-        this.setState({
-            ...this.state,
-            open: !this.state.open
-        })
-    }
-    render(){
-        return(
-              <motion.div
-                    style={{
-                        backdropFilter: "blur(3px)",
-                        display: 'flex', alignItems: 'center', position: "fixed!important", left: 0,height: 60, width: "100vw"}}
-                    id={"Navbar"}>
-                  <motion.div
-                        id={"Toolbar"}
-                        style={{background: 'transparent', display: 'flex', alignItems: 'center',width: "100vw", height: 60}}>
-                  
-                  </motion.div>
-              </motion.div>
-        )
-    }
-    
-}
+import Toggle from "../Motion/toggle";
+import "./nav.css"
+// class Drawer extends React.Component{
+//     constructor(props) {
+//         super(props);
+//         this.state= {
+//             open: false
+//         }
+//     }
+//     componentDidMount() {}
+//     shouldComponentUpdate(nextProps, nextState, nextContext) {return this.props!==nextProps || this.state!==nextState || this.context!==nextContext;}
+//     componentDidUpdate(prevProps, prevState, snapshot) {
+//
+//     }
+//     componentWillUnmount() {}
+//
+//     toggle(){
+//         this.setState({
+//             ...this.state,
+//             open: !this.state.open
+//         })
+//     }
+//     render(){
+//         return(
+//               <motion.div
+//                     style={{
+//                         backdropFilter: "blur(3px)",
+//                         display: 'flex', alignItems: 'center', position: "fixed!important", left: 0,height: 60, width: "100vw"}}
+//                     id={"Navbar"}>
+//                   <motion.div
+//                         id={"Toolbar"}
+//                         style={{background: 'transparent', display: 'flex', alignItems: 'center',width: "100vw", height: 60}}>
+//
+//                   </motion.div>
+//               </motion.div>
+//         )
+//     }
+//
+// }
 
 
 class Navbar extends React.Component{
+      window={
+         width: window.innerWidth,
+         height: window.innerHeight
+      }
     constructor(props) {
         super(props);
         this.state= {
             open:false,
-            window:{
-                height:window.innerHeight,
-                width: window.innerWidth
-            },
-            
+            activeTabID:"HOME"
         }
         this.toggle=this.toggle.bind(this);
     }
     componentDidMount() {
-        window.addEventListener('resize', ()=>{
-            this.setState({
-                ...this.state,
-                window: {
-                    width: window.innerWidth,
-                    height: window.innerHeight
-                }
-            })
+        window.addEventListener('resize', (e)=>{
+           this.window= {
+              width: e.target.innerWidth,
+              height: e.target.innerHeight
+           }
         })
     }
     shouldComponentUpdate(nextProps, nextState, nextContext) {return this.props!==nextProps || this.state!==nextState || this.context!==nextContext;}
-    componentDidUpdate(prevProps, prevState, snapshot) {}
+    componentDidUpdate(prevProps, prevState, snapshot) {
+         document.getElementById(`${this.state.activeTabID}-top`).style.fontWeight="bold";
+    }
     componentWillUnmount() {
-        window.removeEventListener('resize', ()=> {
-            this.setState({
-                ...this.state,
-                window: {
-                    width: window.innerWidth,
-                    height: window.innerHeight
-                }
-            })
+        window.removeEventListener('resize', (e)=> {
+           this.window= {
+              width: e.target.innerWidth,
+              height: e.target.innerHeight
+           }
         });
     }
     
@@ -92,34 +88,38 @@ class Navbar extends React.Component{
     render(){
         const navbarVariants= {
             closed:  {
-                height: 90
+                height: 80
             },
             open: {
-                height: "50vh"
+                height: (this.props.items.length*60) + 80,
             }
         };
         const toolbarVariants={
             closed:  {
-                height: 70
+                height: 60
             },
             open: {
-                height: "calc(50vh - 20px)"
+                  height: (this.props.items.length * 60) + 60,
             }
         }
         
-        const maxWidth = "calc(100% - 30px)";
           const LRef = React.forwardRef((props, ref)=>{
                 return <Link to={props.to} {...props} ref={ref}/>
           }), MLink = motion(LRef);
+        const TextRef=React.forwardRef((props, ref)=>{
+           return(<Text
+              ref={ref}
+              {...props}/>)
+        })
         return(
               <MotionConfig transition={{type:'spring', bounce: 0.2, duration: 0.5}}>
-                  <motion.div
+                  <motion.div layout
                         custom={this.state}
                         animate={this.state.open?"open":"closed"}
                         initial={"closed"}
                         variants={navbarVariants}
                         style={{
-                            width: this.state.window.width,
+                            width: '100vw',
                             zIndex: 1000,
                             position: 'fixed',
                             top: 0, left: 0,
@@ -129,16 +129,18 @@ class Navbar extends React.Component{
                             backdropFilter: 'blur(20px)'}}
                         id={"Navbar-container"}>
                       <motion.div
+                            layout
                             custom={this.state}
                             animate={this.state.open?"open":"closed"}
                             initial={"closed"}
                             variants={toolbarVariants}
                             style={{
+                                overflow: "hidden",
                                 width: "calc(100% - 20px)",
                                 borderRadius:20,
                                 display: 'flex',
                                 alignItems: 'center',
-                                background: `linear-gradient(112deg, hsla(220, 80%, 12%, 0.6) -40%, hsla(180, 50%, 49%, 0.6) 100%)`
+                                background: `linear-gradient(112deg, hsla(240, 80%, 32%, 0.9) -40%, hsla(210, 50%, 49%, 0.8) 100%)`
                             }}
                             id={"Toolbar"}>
                           <motion.button
@@ -147,51 +149,117 @@ class Navbar extends React.Component{
                                 whileTap={{scale:0.9}}
                                 onClick={this.toggle}
                                 style={{
-                                    background: "rgba(0, 0, 0, 0.0)",
                                     display: 'flex',
                                     alignItems: 'center', justifyContent: 'center',
                                     position: 'absolute',
                                     top: 20,
                                     borderRadius:15,
-                                    width: 50, height: 50, marginInline: 10}}>
-                              <CgMenu size={30}/>
+                                      padding:0,
+                                    width: 40, height: 40, marginInline: 10}}>
+                                    <Toggle open={this.state.open}/>
+                                       {/*<CgMenu size={25}/>*/}
                           </motion.button>
-                            <motion.ul
-                                  id={"nav-bar-menu"}
+                              <motion.ul
+                                  id={"nav-horizontal-menu"}
                                   style={{
-                                        position: 'absolute',
-                                        right: 20,
-                                        marginInline: 10,
-                                        top:10,
-                                        padding: 0,
-                                        height: 70,
-                                        alignItems: 'center',
-                                        justifyContent: 'center',
-                                        margin: 0,
-                                        display: 'flex',
-                                        listStyleType: "none"}}>
-                                  {this.props.items.map((item, index)=>{
-                                        return (
-                                              <MLink
-                                                    whileHover={{scale:1.08}}
-                                                    whileTap={{scale: 0.9}}
-                                                    style={{textDecoration: 'none', }}
-                                                    key={item.text+index}
-                                                    to={item.to}>
-                                                    <motion.button
-                                                          style={{
-                                                                background: "transparent",
-                                                                marginInline:10,
-                                                                display: 'flex', justifyContent: 'center', alignItems: 'center',height: 40, width: 70}}
-                                                          key={item.to+index}>
-                                                          <Text h3>{item.text}</Text>
-                                                    </motion.button>
-                                              </MLink>
-                  
-                                        )
-                                  })}
-                            </motion.ul>
-                            {this.props.children}
+                                           position: 'absolute',
+                                           right: 20,
+                                           marginInline: 10,
+                                           top:10,
+                                           padding: 0,
+                                           height: 60,
+                                           alignItems: 'center',
+                                           justifyContent: 'center',
+                                           margin: 0,
+                                           display: this.state.open?"none":'flex',
+                                           listStyleType: "none"}}>
+                                     {this.props.items.map((item, index)=>{
+                                           return (
+                                                 <MLink
+                                                      id={item.text.toUpperCase()+'-top'}
+                                                      onClick={(e)=>{
+                                                         this.setState({
+                                                            ...this.state,
+                                                            open:false,
+                                                            activeTabID: item.text.toUpperCase()
+                                                         })
+                                                      }}
+                                                      whileHover={{scale:1.08, background: 'hsla(190, 20%, 50%, 0.1)'}}
+                                                       whileTap={{scale: 0.9}}
+                                                       style={{
+                                                          borderRadius:10,
+                                                          textDecoration:'none',
+                                                          color:'white',
+                                                          padding:10,
+                                                          background: 'hsla(190, 20%, 50%, 0.0)',
+                                                          width: "100%",
+                                                          height: "60%",
+                                                          display: 'flex',
+                                                          marginInline:15,
+                                                          justifyContent: 'center',
+                                                          alignItems: 'center'}}
+                                                       key={item.text+index}
+                                                       to={item.to}>
+                                                        {item.text}
+                                                 </MLink>
+                                           )
+                                     })}
+                              </motion.ul>
+                              <motion.ul
+                                 animate={{height:this.state.open?this.props.items.length*60:0, opacity:this.state.open?1:0}}
+                                 transition={{type:'spring', bounce: 0.1, duration: 0.3}}
+                                 initial={{height:0, opacity:0}}
+                                 id={"nav-vertical-menu"}
+                                 style={{
+                                    overflow:'hidden',
+                                    position: "relative",
+                                    width: "100%",
+                                    padding:0,
+                                    margin:0,
+                                    top: 30,
+                                    height: this.props.items.length*60,
+                                    display: 'flex', flexDirection: 'column', justifyContent: "center",alignItems: 'center'
+                                 }}>
+                                 {this.props.items.map((item, index)=>{
+                                    return (
+                                       <MLink
+                                          id={item.text.toUpperCase()}
+                                          onClick={(e)=>{
+                                             this.setState({
+                                                ...this.state,
+                                                open:false,
+                                                activeTabID: e.currentTarget.id
+                                             })
+                                          }}
+                                          whileHover={{scale:1.08}}
+                                          whileTap={{scale: 0.9}}
+                                          style={{
+                                             height: 60,
+                                             width: "100%",
+                                             textDecoration: 'none', display: 'flex', justifyContent: 'center', alignItems: 'center'}}
+                                          key={item.text+index}
+                                          to={item.to}>
+                                          <Text h5 css={{
+                                             padding: 0,
+                                             margin:"0 15px",
+                                             color: "$text"
+                                          }}>{item.text}</Text>
+                                       </MLink>
+                                    )
+                                 })}
+                              </motion.ul>
+                              <motion.div
+                                 className={'brand-right'}
+                                 id={"Brand"}>
+                                 <MText
+                                    color={"white"}
+                                    element={motion(TextRef)}
+                                    visible={!this.state.open}
+                                    speed={0.025}
+                                    text={this.state.activeTabID}
+                                   />
+                              </motion.div>
+                              {this.props.children}
                       </motion.div>
                   </motion.div>
               </MotionConfig>
