@@ -126,8 +126,7 @@ class Navbar extends React.Component{
                             top: 0, left: 0,
                             display: 'flex',
                             justifyContent: 'center',
-                            alignItems: 'center',
-                            backdropFilter: 'blur(20px)'}}
+                            alignItems: 'center'}}
                         id={"Navbar-container"}>
                       <motion.div
                             layout
@@ -208,18 +207,20 @@ class Navbar extends React.Component{
                                      })}
                               </motion.ul>
                               <motion.ul
-                                 animate={{height:this.state.open?this.props.items.length*60:0, opacity:this.state.open?1:0}}
-                                 transition={{type:'spring', bounce: 0.1, duration: 0.3}}
-                                 initial={{height:0, opacity:0}}
+                                 animate={{
+                                    height:this.state.open?this.props.items.length*60:0,
+                                    opacity:this.state.open?1:0
+                              }}
+                                 transition={{type:'spring', bounce: 0.1, duration: 0.4}}
+                                 initial={{opacity:0, top: 60, height: 0}}
                                  id={"nav-vertical-menu"}
                                  style={{
                                     overflow:'hidden',
-                                    position: "relative",
+                                    position: "absolute",
                                     width: "100%",
                                     padding:0,
+                                    left:0,
                                     margin:0,
-                                    top: 30,
-                                    height: this.props.items.length*60,
                                     display: 'flex', flexDirection: 'column', justifyContent: "center",alignItems: 'center'
                                  }}>
                                  {this.props.items.map((item, index)=>{
@@ -237,13 +238,13 @@ class Navbar extends React.Component{
                                           whileTap={{scale: 0.9}}
                                           style={{
                                              height: 60,
-                                             width: "100%",
+                                             width: "90%",
                                              textDecoration: 'none', display: 'flex', justifyContent: 'center', alignItems: 'center'}}
                                           key={item.text+index}
                                           to={item.to}>
                                           <Text h5 css={{
                                              padding: 0,
-                                             margin:"0 15px",
+                                             // margin:"0 15px",
                                              color: "$text"
                                           }}>{item.text}</Text>
                                        </MLink>

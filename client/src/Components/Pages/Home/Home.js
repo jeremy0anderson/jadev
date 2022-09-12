@@ -149,9 +149,7 @@ class Home extends Component {
                                text: "Full stack Web Developer | SLC, UT",
                             }
                          ]} visible={this.state.visible} bounce={0.1} custom={0.025} duration={0.4}/>
-                         
                       </Div>
-                      
                       <Div whileInView={{
                            opacity:[1, 1, 1],
                             y:[0, 20, 0]

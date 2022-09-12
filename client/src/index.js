@@ -11,6 +11,7 @@ import {NextUIProvider, createTheme} from "@nextui-org/react";
 const token = localStorage.getItem('token');
 const client = new ApolloClient({
    uri:'https://jeremyjs-server.herokuapp.com/graphql',
+   // uri:"http://localhost:4000/graphql",
    cache: new InMemoryCache(),
    headers:{
       authorization: token!==null?`Bearer ${localStorage.getItem('token')}`:''

@@ -5,9 +5,10 @@ import Navbar from "./Components/Navigation/Navbar";
 import Home from "./Components/Pages/Home/_Home";
 import {ContactPage} from "./Components/Pages/Contact/Contact";
 import Register from "./Components/User/Register";
-import Login from "./Components/User/Login";
 import MotionText from "./Components/Motion/Text";
 import About from "./Components/Pages/About/About";
+import Login from "./Components/User/Login";
+import User from "./Components/User/User";
 class App extends Component {
     constructor(props) {
         super(props);
@@ -61,8 +62,9 @@ class App extends Component {
                     <Route path={"/about"} element={<AboutPage/>}/>
                     <Route path={"/contact"} element={<ContactPage/>}/>
                     <Route path={"/register"} element={<Register/>}/>
-                    <Route path={"/login"} elemnt={<Login/>}/>
+                    <Route path={"/login"} element={<Login/>}/>
                     <Route path={"/posts"} element={<div/>}/>
+                    <Route path={"/user/:id"} element={<User/>}/>
                 </Routes>
             </motion.div>
         );

@@ -201,7 +201,7 @@ class Skills extends React.Component {
                   width: "100%",
                   padding: 0,
                   display: 'grid',
-                  gridTemplate:"auto / 33% 33% 33%",
+                  gridTemplate:"auto / auto auto auto auto",
                   flexWrap: 'wrap',
                   justifyContent: 'center',
                   alignItems: 'center',

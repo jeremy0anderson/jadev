@@ -12,7 +12,10 @@
     position: absolute!important;
     margin-inline:15px!important;
 }
-
+#Navbar-container{
+    backdrop-filter: blur(15px) saturate(100%) opacity(1) brightness(100%);
+    -webkit-backdrop-filter: blur(15px) ;
+}
 
 
 /*mobile device dependencies*/
