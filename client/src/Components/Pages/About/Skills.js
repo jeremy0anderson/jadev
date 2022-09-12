@@ -190,42 +190,44 @@ class Skills extends React.Component {
         this.setState({...this.state, open:!this.state.open})
     }
     render(){
+        const mainBox= {
+            hidden: {
+                opacity:0,
+                transition: {
+                    staggerChildren: .045
+                }
+            },
+            visible: {
+                opacity: 1,
+                transition: {
+                    staggerChildren: .025
+                }
+            }
+        }
         const Div = motion.div;
         const Image = motion.img;
         return(
            <Div
-              layout
-              layoutScroll={true}
+              // layoutScroll={true}
               style={{
                   overflow: 'hidden',
                   width: "100%",
                   padding: 0,
-                  display: 'grid',
-                  gridTemplate:"auto / auto auto auto auto",
+                  display: 'flex',
                   flexWrap: 'wrap',
                   justifyContent: 'center',
                   alignItems: 'center',
                   height: "auto"}}
-              initial={{
-                  opacity:0,
-                  transition: {
-                      staggerChildren: .045
-                  }
-              }}
-              whileInView={{
-                  opacity: 1,
-                  transition: {
-                      staggerChildren: .025
-                  }
-              }}
-              
+              initial={"hidden"}
+              whileInView={"visible"}
+              variants={mainBox}
               // initial={"hidden"}
               // variants={containerVariants}
               id="Skills">
                {this.props.skillSet.map(({skill, link, progress, init}, index)=>{
                    return (
                       <Div
-                         layout
+                         layoutScroll={true}
                          className={"single-skill"}
                          style={{
                              backdropFilter:"blur(10px)",
@@ -241,15 +243,14 @@ class Skills extends React.Component {
                          }}
                          key={skill+"card"+index}
                          viewport={{once:false, amount:0}}
-                         initial={"hidden"}
-                         whileInView={"visible"}
+                         // initial={"hidden"}
+                         // whileInView={"visible"}
                          whileHover={{scale:1.1}}
                          variants={containerVariants}>
                           
                           <Div
+                             viewport={{once:false, amount:0}}
                              style={{display: 'flex',justifyContent: 'center', alignItems: 'center', flexDirection: 'column'}}
-                             layout
-                             variants={itemVariants}
                              key={skill+"-img-container"}>
                               <Image className={"single-skill-img"} width={70} height={70} src={link} alt={skill+"-image"}/>
                               <Text

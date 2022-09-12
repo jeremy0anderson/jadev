@@ -5,15 +5,18 @@
 }
 .home-section{
     height:100vh;
+    margin-top:80px;
     width:100%;
     overflow:hidden;
-    margin-top:80px;
+
+    /*margin-top:80px;*/
     /*border: 1px solid white;*/
 }
 .centered{
     display:flex;
     justify-content: center;
     align-items: center;
+    padding: 5px;
 }
 .centered-column{
     display:flex;
@@ -40,4 +43,9 @@
     backdrop-filter: blur(10px)!important;
     border-radius: 45%!important;
     /*border: 1px solid white;*/
+}
+@media(max-width: 400px){
+    #user-btn-group{
+        top: 25%!important;
+    }
 }

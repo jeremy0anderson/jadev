@@ -32,7 +32,9 @@ function Register(){
          },
          onCompleted: ({register})=>{
             localStorage.setItem('token', register.token);
-            localStorage.setItem('userId', register._id);         },
+            localStorage.setItem('userId', register._id);
+            nav("/user/"+register._id);
+         },
          onError:(e)=>{
             console.log(e);
          }

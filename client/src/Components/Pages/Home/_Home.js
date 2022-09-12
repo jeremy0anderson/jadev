@@ -7,6 +7,7 @@ import {IoLogoGithub, IoLogoLinkedin, IoMail} from "react-icons/io5";
 import {Link} from 'react-router-dom';
 import * as I from "react-icons/io5";
 import {Button} from "@nextui-org/react";
+import Skills, {skillsArr} from "../About/Skills";
 
 const LRef = React.forwardRef((props, ref)=>{
     return <Link to={props.to} ref={ref} {...props}/>
@@ -97,6 +98,16 @@ class Home extends Component {
       })
    }
     render() {
+       const skillBoxVariants = {
+          hide: {
+             opacity: 0,
+          },
+          show: {}
+       }
+       const skillVariants={
+          hide: {},
+          show: {}
+       }
         const pageVariants = {
             hidden: {
                 opacity: 0,
@@ -106,40 +117,42 @@ class Home extends Component {
                 opacity: 1,
                 y:0,
                 transition:{
-                    type:'spring', delay: 0, duration: 0.8, bounce: 0.1
+                    type:'spring', delay: 0, duration: 0.4, bounce: 0.1
                 }
             }
         }
         const containerVariants = {
             hidden: {
                 opacity: 0,
+               transition:{
+                  type:"spring", staggerChildren: 0.045
+               }
             },
             visible: {
                 opacity: 1,
                 transition:{
-                    duration: 0.5, delayChildren: 0.3, staggerChildren:0.05
+                   type:"spring", staggerChildren: 0.045
                 }
                 
             }
         }
         return (
            <motion.div
-              viewport={{once:false,amount:0}}
-              whileInView={"visible"}
-              initial={"hidden"}
-              variants={containerVariants}
+              layout
               className={"centered"}
               id={"Home-container"}>
               
                <motion.div
+                  layoutScroll={true}
                   onViewportEnter={this.firstPageToggle}
                   onViewportLeave={this.firstPageToggle}
+                  whileInView={"visible"}
+                  initial={"hidden"}
+                  variants={containerVariants}
                   id={"Home-section-1"}
                   className={"home-section centered"}>
                    <motion.div
                       viewport={{once:true,amount: 0}}
-                      whileInView={"visible"}
-                      initial={"hidden"}
                       variants={pageVariants}
                       className={"page-content centered"}>
                         <motion.div
@@ -159,12 +172,7 @@ class Home extends Component {
                                 }
                             ]} visible={this.state.page1} bounce={0.1} custom={0.035} duration={0.5}/>
                             <Socials inView={this.state.page1}/>
-                        </motion.div>
-                        <motion.div style={{position: 'relative', top: 90}}>
-                           <Button.Group color={"warning"} rounded>
-                              <Button as={Link} to={"/login"}>Sign In</Button>
-                              <Button as={Link} to={"/register"} ghost>Sign Up</Button>
-                           </Button.Group>
+                           
                         </motion.div>
                       <motion.div initial={{opacity:0}} animate={{
                            height: "auto",
@@ -188,30 +196,48 @@ class Home extends Component {
                </motion.div>
               
                <motion.div
+                  layoutScroll={true}
                   onViewportEnter={this.secondPageToggle}
                   onViewportLeave={this.secondPageToggle}
+                  whileInView={"visible"}
+                  initial={"hidden"}
+                  variants={containerVariants}
                   id={"Home-section-2"}
                   className={"home-section centered"}>
                    <motion.div
-                      viewport={{once:false,amount: 0}}
-                      whileInView={"visible"}
-                      initial={"hidden"}
+                      viewport={{once:false, amount: 0}}
+                      style={{width: "100%", height: "100%"}}
                       variants={pageVariants}
                       className={"page-content"}>
-                   
+                      <motion.div
+                         className={"centered-column"}
+                         id={"Home-section-2-text"}>
+                         
+                      <MotionText color={"#f1f1f1"} textItems={[
+                         {
+                            type: "h4",
+                            text: "Skills & About",
+                            style:{marginBottom:20}
+                         },
+                      ]} visible={this.state.page2} bounce={0.1} custom={0.035} duration={0.5}/>
+                         <Skills skillSet={skillsArr}/>
+                      </motion.div>
+                      
                    </motion.div>
                </motion.div>
               
               
                <motion.div
+                  layoutScroll={true}
                   onViewportEnter={this.thirdPageToggle}
                   onViewportLeave={this.thirdPageToggle}
+                  whileInView={"visible"}
+                  initial={"hidden"}
+                  variants={containerVariants}
                   id={"Home-section-3"}
                   className={"home-section centered"}>
                    <motion.div
                       viewport={{once:false,amount: 0}}
-                      whileInView={"visible"}
-                      initial={"hidden"}
                       variants={pageVariants}
                       className={"page-content"}>
                    

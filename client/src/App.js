@@ -28,13 +28,14 @@ const octokit = new Octokit(process.env.REACT_APP_GH_ACCESS_TOKEN);
                       whileInView={{y: 0, opacity: 1}}
                       id="Landing-about" style={{position: 'relative', top: 60, marginTop: 5, minWidth:390, height: "100vh"}}>
                       <motion.div
-                            style={{position: 'relative', x: 0,  opacity: 1, width: "auto", borderBottom: "1px solid black"}}>
-                            <MotionText color={"rgb(5,5,5)"} textItems={[{type: "h2", text: "About"}]} visible={true} bounce={0.4} custom={0.002} duration={0.4}/>
+                         style={{position: 'relative', x: 0,  opacity: 1, width: "auto", borderBottom: "1px solid black"}}>
+                            <MotionText color={"rgb(225,225,225)"} textItems={[{type: "h2", text: "About"}]} visible={true} bounce={0.4} custom={0.002} duration={0.4}/>
                       </motion.div>
                       <About/>
                 </motion.div>
           )
     }
+    
     
     
 class App extends React.Component{
@@ -78,3 +79,5 @@ class App extends React.Component{
       }      
 }
 export default App;
+
+

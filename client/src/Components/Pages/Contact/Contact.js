@@ -215,7 +215,7 @@ class Contact extends Component {
                                     className={"contact-input"}
                                     bordered
                                     label={"Name"}
-                                    color={this.state.nameError?"error":"primary"}
+                                    color={this.state.nameError?"error":"warning"}
                                     onChange={this.handleNameChange}
                                     helperText={this.state.nameError?"Name required":" "}
                                     onBlur={this.handleNameBlur}
@@ -230,7 +230,7 @@ class Contact extends Component {
                                     type={"email"}
                                     required={true}
                                     onBlur={this.handleEmailBlur}
-                                    color={this.state.emailError?"error":"primary"}
+                                    color={this.state.emailError?"error":"warning"}
                                     onChange={this.handleEmailChange}
                                     helperText={this.state.emailError?"Enter a valid email":" "}
                                     value={this.state.email}
@@ -245,7 +245,7 @@ class Contact extends Component {
                                       bordered
                                       required={true}
                                       onBlur={this.handleSubjectBlur}
-                                      color={this.state.subjectError?"error":"primary"}
+                                      color={this.state.subjectError?"error":"warning"}
                                       onChange={this.handleSubjectChange}
                                       label={"Subject"}
                                       value={this.state.subject}
@@ -271,7 +271,7 @@ class Contact extends Component {
                                     label={"Message"}
                                     helperText={this.state.messageError?"Message required":" "}
                                     helperColor={"error"}
-                                    color={this.state.messageError?"error":"primary"}/>
+                                    color={this.state.messageError?"error":"warning"}/>
                                 </motion.div>
                                 <Spacer className={"textarea-spacer"} x={1} y={0}/>
                             </motion.div>
@@ -286,8 +286,10 @@ class Contact extends Component {
                                 <Spacer className={"textarea-spacer-column"} x={0} y={1}/>
                                 <Spacer className={"textarea-spacer"} x={1} y={1}/>
                                 <Button
+                                    rounded
+                                    color={"warning"}
                                     disabled={this.state.emailError || this.state.nameError || this.state.messageError || this.state.subjectError}
-                                    style={{width: "100%"}} type={"submit"}>
+                                    style={{width: "100%",marginTop:15}} type={"submit"}>
                                     {this.state.loading? <TailSpin color="#00BFFF" height={30} width={30} visible={this.state?.loading}/>: "Send"}
                                 </Button>
                                 <Spacer className={"textarea-spacer"} x={1} y={1}/>
@@ -315,10 +317,10 @@ export function ContactPage(){
           >
               <MotionText color={"#eaeaea"} textItems={[
                   {
-                      type: "h3",
+                      type: "h4",
                       text: "Send me an email",
                   },
-              ]} visible={true} bounce={0} custom={0.055} duration={0.3}/>
+              ]} visible={true} bounce={0} custom={0.065} duration={0.7}/>
               <Contact/>
           </Div>
     )

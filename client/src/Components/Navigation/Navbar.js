@@ -259,7 +259,7 @@ class Navbar extends React.Component{
                                     element={motion(TextRef)}
                                     visible={!this.state.open}
                                     speed={0.025}
-                                    text={this.state.activeTabID}
+                                    text={JSON.parse(localStorage.getItem('user'))?.email || this.state.activeTabID}
                                    />
                               </motion.div>
                               {this.props.children}
