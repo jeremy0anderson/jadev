@@ -31,26 +31,7 @@ export const Bio = (props)=>{
             <Text>Coding is just one skill that I bring to the table. I have strong interpersonal, conflict resolution, management, communication, and organizational skills. I am a self-starter who is passionate, extremely driven, and strives to produce things that I have pride in.</Text>
             <Text>I am currently open for employment and can be reached by the following: </Text>
          </motion.div>
-         <motion.div
-            animate={{height: open?"auto":0, opacity: open? 1:0}}
-            initial={{opacity: 0}}
-            style={{display: 'flex', justifyContent: 'space-evenly', alignItems: 'center', width: "100%", margin: "40px 0", overflow: 'hidden'}}>
-            <motion.a
-               style={{width: 50, height: 50, textDecoration: 'none', color: 'black'}}
-               href={"https://github.com/jeremy0anderson"}>
-               <IoLogoGithub size={50}/>
-            </motion.a>
-            <motion.a
-               style={{width: 50, height: 50, textDecoration: 'none', color: 'black'}}
-               href={"https://linkedin.com/in/jeremyanderson-dev"}>
-               <IoLogoLinkedin size={50}/>
-            </motion.a>
-            <MLink
-               style={{width: 50, height: 50, textDecoration: 'none', color: 'black'}}
-               to={"/contact"}>
-               <IoMail size={50}/>
-            </MLink>
-         </motion.div>
+         
          <motion.button
             style={{width: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center'}}
             onClick={expand}>

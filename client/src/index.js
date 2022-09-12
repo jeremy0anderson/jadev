@@ -57,6 +57,5 @@ root.render(
        </NextUIProvider>
     </React.StrictMode>
 );
-
-reportWebVitals();
 register();
+reportWebVitals();

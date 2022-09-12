@@ -6,7 +6,11 @@ const Text = ({ text, visible, ...props }) => {
    
    const container = {
       hidden: {
-         opacity: 0
+         opacity: 0,
+         transition: {
+            staggerChildren:props.speed,
+            type:"spring",
+         }
       },
       visible: {
             opacity: 1,

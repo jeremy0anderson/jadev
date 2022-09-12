@@ -22,6 +22,14 @@ button{
     /*.spacer{*/
     /*    display: none!important;*/
     /*}*/
+    .single-skill{
+        width: 90px!important;
+        height: 90px!important;
+    }
+    .single-skill-img{
+        width: 50px!important;
+        height:50px!important;
+    }
     .textarea-spacer{
         display: none!important;
     }

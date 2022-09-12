@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {Link, Route, Routes} from 'react-router-dom';
 import {motion} from 'framer-motion';
 import Navbar from "./Components/Navigation/Navbar";
-import Home from "./Components/Pages/Home/Home";
+import Home from "./Components/Pages/Home/_Home";
 import {ContactPage} from "./Components/Pages/Contact/Contact";
 import Register from "./Components/User/Register";
 import Login from "./Components/User/Login";
@@ -62,6 +62,7 @@ class App extends Component {
                     <Route path={"/contact"} element={<ContactPage/>}/>
                     <Route path={"/register"} element={<Register/>}/>
                     <Route path={"/login"} elemnt={<Login/>}/>
+                    <Route path={"/posts"} element={<div/>}/>
                 </Routes>
             </motion.div>
         );

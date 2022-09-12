@@ -25,6 +25,7 @@ function Toggle(props){
       <motion.svg
          stroke={"rgba(238,238,238,0.91)"}
          viewBox={"0 0 25 25"}
+         strokeWidth={2}
          height={25}
          width={25}>
          <motion.line

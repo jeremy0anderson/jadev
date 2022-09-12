@@ -135,7 +135,7 @@ export const skillsArr = [
 const containerVariants = {
     hidden:{
         opacity:0,
-        y:-100,
+        y:-50,
         transition: {
             type: 'spring',
             duration:0.7,
@@ -196,7 +196,16 @@ class Skills extends React.Component {
            <Div
               layout
               layoutScroll={true}
-              style={{overflow: 'hidden', width: "90%",padding: 20, display: 'flex', flexWrap: 'wrap', justifyContent: 'center', alignItems: 'center', height: "auto"}}
+              style={{
+                  overflow: 'hidden',
+                  width: "100%",
+                  padding: 0,
+                  display: 'grid',
+                  gridTemplate:"auto / 33% 33% 33%",
+                  flexWrap: 'wrap',
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  height: "auto"}}
               initial={{
                   opacity:0,
                   transition: {
@@ -206,7 +215,7 @@ class Skills extends React.Component {
               whileInView={{
                   opacity: 1,
                   transition: {
-                      staggerChildren: .045
+                      staggerChildren: .025
                   }
               }}
               
@@ -216,10 +225,11 @@ class Skills extends React.Component {
                {this.props.skillSet.map(({skill, link, progress, init}, index)=>{
                    return (
                       <Div
+                         layout
                          className={"single-skill"}
                          style={{
                              backdropFilter:"blur(10px)",
-                             background: `linear-gradient(112deg, hsla(220, 80%, 70%, 0.2) -40%, hsla(190, 80%, 70%, 0.2) 100%)`,
+                             background: `linear-gradient(112deg, hsla(220, 100%, 90%, 0.1) -40%, hsla(190, 100%, 90%, 0.3) 100%)`,
                              borderRadius: 15,
                              display: 'flex',
                              alignItems: 'center',
@@ -235,15 +245,14 @@ class Skills extends React.Component {
                          whileInView={"visible"}
                          whileHover={{scale:1.1}}
                          variants={containerVariants}>
+                          
                           <Div
-                             
                              style={{display: 'flex',justifyContent: 'center', alignItems: 'center', flexDirection: 'column'}}
                              layout
                              variants={itemVariants}
                              key={skill+"-img-container"}>
-                              <Image width={70} height={70} src={link} alt={skill+"-image"}/>
+                              <Image className={"single-skill-img"} width={70} height={70} src={link} alt={skill+"-image"}/>
                               <Text
-                                 
                                  key={skill+"text"}>
                                   {skill}
                               </Text>

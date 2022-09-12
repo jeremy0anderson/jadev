@@ -69,6 +69,7 @@ class Navbar extends React.Component{
     shouldComponentUpdate(nextProps, nextState, nextContext) {return this.props!==nextProps || this.state!==nextState || this.context!==nextContext;}
     componentDidUpdate(prevProps, prevState, snapshot) {
          document.getElementById(`${this.state.activeTabID}-top`).style.fontWeight="bold";
+       document.getElementById(`${this.state.activeTabID}-top`).style.color="#b26980";
     }
     componentWillUnmount() {
         window.removeEventListener('resize', (e)=> {
@@ -140,7 +141,7 @@ class Navbar extends React.Component{
                                 borderRadius:20,
                                 display: 'flex',
                                 alignItems: 'center',
-                                background: `linear-gradient(112deg, hsla(240, 80%, 32%, 0.9) -40%, hsla(210, 50%, 49%, 0.8) 100%)`
+                                background: `linear-gradient(112deg, hsla(50, 80%, 32%, 0.3) -40%, hsla(10, 80%, 49%, 0.5) 100%)`
                             }}
                             id={"Toolbar"}>
                           <motion.button
@@ -149,6 +150,7 @@ class Navbar extends React.Component{
                                 whileTap={{scale:0.9}}
                                 onClick={this.toggle}
                                 style={{
+                                   cursor:'pointer',
                                     display: 'flex',
                                     alignItems: 'center', justifyContent: 'center',
                                     position: 'absolute',
