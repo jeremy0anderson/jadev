@@ -3,132 +3,121 @@ import {motion} from 'framer-motion';
 import {Text} from "@nextui-org/react";
 import PropTypes, {object} from 'prop-types';
 
+
+
+
+
 export const skillsArr = [
     {
         skill: 'React',
         link: 'https://cdn.svgporn.com/logos/react.svg',
-        progress: "90%",
-        init:true
+        progress: "90%"
     },
     {
         skill: 'Javascript',
         link: 'https://cdn.svgporn.com/logos/javascript.svg',
-        progress: "100%",
-        init:true
+        progress: "100%"
     },
     {
         skill: 'MongoDB',
         link: 'https://cdn.svgporn.com/logos/mongodb.svg',
-        progress: "80%",
-        init: true
+        progress: "80%"
     },
     {
         skill: 'GraphQL',
         link: 'https://cdn.svgporn.com/logos/graphql.svg',
-        progress: "70%",
-        init:true
+        progress: "70%"
     },
     {
         skill: 'React/Router',
         link: 'https://cdn.svgporn.com/logos/react-router.svg',
-        progress: "90%",
-        init:false
+        progress: "90%"
     },
     {
         skill: 'JWT',
         link: 'https://cdn.svgporn.com/logos/jwt-icon.svg',
-        progress: "90%",
-        init:false
+        progress: "90%"
     },
     {
         skill: 'MUI',
         link: 'https://cdn.svgporn.com/logos/material-ui.svg',
-        progress: "90%",
-        init:false
+        progress: "90%"
     },
     {
         skill: 'Framer',
         link: 'https://cdn.svgporn.com/logos/framer.svg',
-        progress: "80%",
-        init:false
+        progress: "80%"
     },
     {
         skill: 'HTML5',
         link: 'https://cdn.svgporn.com/logos/html-5.svg',
-        progress: "100%",
-        init:false
+        progress: "100%"
     },
     {
         skill: 'CSS3',
         link: 'https://cdn.svgporn.com/logos/css-3.svg',
-        progress: "100%",
-        init:false
+        progress: "100%"
     },
     {
         skill: 'Express',
         link: 'https://cdn.svgporn.com/logos/express.svg',
-        progress: "100%",
-        init:false
+        progress: "100%"
     },
     {
         skill: 'Node',
         link: 'https://cdn.svgporn.com/logos/nodejs.svg',
-        progress: "100%",
-        init:false
+        progress: "100%"
     },
     {
         skill: 'Apollo',
         link: 'https://cdn.svgporn.com/logos/apollostack.svg',
-        progress: "80%",
-        init:false
+        progress: "80%"
     },
     {
         skill: 'jQuery',
         link: 'https://cdn.svgporn.com/logos/jquery.svg',
-        progress: "70%",
-        init:false
+        progress: "70%"
     },
     {
         skill: 'Handlebars',
         link: 'https://cdn.svgporn.com/logos/handlebars.svg',
-        progress: "100%",
-        init:false
+        progress: "100%"
     },
     {
         skill: 'Bulma',
         link: 'https://cdn.svgporn.com/logos/bulma.svg',
-        progress: "100%",
-        init:false
+        progress: "100%"
     },
     {
         skill: "Sequelize",
         link: "https://cdn.svgporn.com/logos/sequelize.svg",
-        progress: "100%",
-        init:false
+        progress: "100%"
     },
     {
         skill: 'Socket.io',
         link: 'https://cdn.svgporn.com/logos/socket.io.svg',
-        progress: "80%",
-        init:false
+        progress: "80%"
     },
     {
         skill: 'WebStorm',
         link: 'https://cdn.svgporn.com/logos/webstorm.svg',
-        progress: "100%",
-        init:false
+        progress: "100%"
     },
     {
         skill: 'VS Code',
         link: 'https://cdn.svgporn.com/logos/visual-studio-code.svg',
-        progress: "100%",
-        init:false
+        progress: "100%"
     },
     {
         skill: 'MySQL',
         link: 'https://cdn.svgporn.com/logos/mysql.svg',
-        progress: "80%",
-        init:false
+        progress: "80%"
+    },
+    {
+        skill: "GitHub",
+        link: "https://cdn.svgporn.com/logos/github-icon.svg",
+        progress: "90%",
+        
     }
 ];
 
@@ -155,7 +144,7 @@ const containerVariants = {
 const itemVariants = {
     hidden: {
         opacity: 0,
-        y:-200,
+        y:200,
         transition: {
             type: "spring", bounce: 0.2,
             duration: 0.7,
@@ -167,7 +156,7 @@ const itemVariants = {
             y:0,
            transition: {
             type: "spring", bounce: 0.2,
-               duration: 1,delay: delay/10
+               duration: 1
         }
     }
     }
@@ -220,18 +209,14 @@ class Skills extends React.Component {
                   height: "auto"}}
               initial={"hidden"}
               whileInView={"visible"}
-              variants={mainBox}
-              // initial={"hidden"}
-              // variants={containerVariants}
+              variants={containerVariants}
               id="Skills">
                {this.props.skillSet.map(({skill, link, progress, init}, index)=>{
                    return (
                       <Div
-                         layoutScroll={true}
-                         className={"single-skill"}
+                         className={"single-skill background-blur"}
                          style={{
-                             backdropFilter:"blur(10px)",
-                             background: `linear-gradient(112deg, hsla(220, 100%, 90%, 0.1) -40%, hsla(190, 100%, 90%, 0.3) 100%)`,
+                             background: `linear-gradient(112deg, hsla(15, 100%, 90%, 0.4) -40%, hsla(290, 100%, 90%, 0.5) 100%)`,
                              borderRadius: 15,
                              display: 'flex',
                              alignItems: 'center',
@@ -241,15 +226,12 @@ class Skills extends React.Component {
                              height: 120,
                              width: 120,
                          }}
+                         variants={itemVariants}
                          key={skill+"card"+index}
-                         viewport={{once:false, amount:0}}
-                         // initial={"hidden"}
-                         // whileInView={"visible"}
-                         whileHover={{scale:1.1}}
-                         variants={containerVariants}>
+                         whileHover={{scale:1.1}}>
                           
                           <Div
-                             viewport={{once:false, amount:0}}
+                             
                              style={{display: 'flex',justifyContent: 'center', alignItems: 'center', flexDirection: 'column'}}
                              key={skill+"-img-container"}>
                               <Image className={"single-skill-img"} width={70} height={70} src={link} alt={skill+"-image"}/>

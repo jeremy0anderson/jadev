@@ -1,11 +1,13 @@
 #Home-container{
     width: 100vw!important;
-    height:300vh!important;
+    height:calc(300vh - 80px)!important;
     flex-direction:column;
+    position: absolute!important;
+    top: 80px!important;
 }
 .home-section{
     height:100vh;
-    margin-top:80px;
+    /*margin-top:80px;*/
     width:100%;
     overflow:hidden;
 
@@ -27,6 +29,9 @@
 .page-content{
     width:100%;
     height:100%;
+    justify-content: center;
+    align-items: center!important;
+
 }
 #Avatar{
     width: 160px;

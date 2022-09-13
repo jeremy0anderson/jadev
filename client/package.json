@@ -31,7 +31,10 @@
     "react-spring": "^9.5.2",
     "socket.io-client": "^4.5.2",
     "styled-components": "^5.3.5",
-    "web-vitals": "^3.0.1"
+    "web-vitals": "^3.0.1",
+    "tsparticles": "^2.3.0",
+    "tsparticles-engine": "^2.3.0",
+    "react-particles": "^2.3.0"
   },
   "scripts": {
     "start": "react-scripts start",

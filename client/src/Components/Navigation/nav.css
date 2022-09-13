@@ -1,5 +1,11 @@
 #nav-horizontal-menu{
     display:flex!important;
+    padding-inline:15px!important;
+    width: auto!important;
+}
+#nav-horizontal-menu a{
+    position:relative!important;
+    margin-inline: 10px!important;
 }
 #expand-menu{
     display:none!important;

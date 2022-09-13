@@ -172,14 +172,15 @@ class Contact extends Component {
     render() {
         return (
             <motion.div
-                style={{zIndex:998, display: 'flex', width: "auto", flexDirection:'column', overflow:'visible', alignItems:'center', alignContent:'center', height: "100%",top: 0,position: 'relative'}}>
+               id={"#Contact-form-main"}
+                style={{zIndex:998, display: 'flex', width: "100%", flexDirection:'column', alignItems:'center'}}>
                 {/*<motion.div*/}
                 {/*   style={{display: 'flex',position: 'relative', width: "100%", justifyContent: 'center', alignItems: 'center'}}>*/}
                 {/*    <MotionText color={"rgb(0,0,0)"} textItems={[{type: "h4", text: "Send me a message"}]} visible={true} bounce={0} custom={0.014} duration={0.3}/>*/}
                 {/*</motion.div>*/}
                 <motion.div
                     style={{
-                        width: '90%',
+                        width: '100%',
                         maxWidth: 800,
                         display: 'flex',
                         justifyContent: 'center',
@@ -306,22 +307,35 @@ class Contact extends Component {
 
 export default Contact;
 export function ContactPage(){
+    const TRef = React.forwardRef((props, ref)=>{
+        return <Text ref={ref} {...props}/>
+    });
     const Div = motion.div;
     return (
-          <Div
-                layout
-                initial={{y:-100, opacity: 0}}
-                whileInView={{y:90, opacity: 1}}
-                transition={{duration: 0.3}}
-                style={{position: 'relative', top: 20,height: "auto"}}
-          >
-              <MotionText color={"#eaeaea"} textItems={[
-                  {
-                      type: "h4",
-                      text: "Send me an email",
-                  },
-              ]} visible={true} bounce={0} custom={0.065} duration={0.7}/>
-              <Contact/>
-          </Div>
+       <motion.div style={{height: "100%", display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column'}}>
+           <motion.div style={{display: 'flex', flexDirection: 'column',  position: 'absolute', top: 80}}>
+               <MotionText
+                  h1
+                  color={"#f1f1f1"}
+                  text={"Contact"}
+                  element={motion(TRef)}
+                  bounce={0.1}
+                  custom={0.035}
+                  duration={0.5}/>
+               <MotionText
+                  h4
+                  color={"#eaeaea"}
+                  custom={0.034}
+                  element={motion(TRef)}
+                  text={"Send me an email"}
+                  bounce={0.2}
+                  duration={0.4}/>
+           </motion.div>
+           <motion.div
+                style={{width: "100%",position: "absolute", top: "30vh"}}
+                id={"contact-page-contact"}>
+            <Contact/>
+           </motion.div>
+       </motion.div>
     )
 }

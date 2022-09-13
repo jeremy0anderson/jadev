@@ -6,6 +6,7 @@ import {CgMenu} from "react-icons/cg";
 import {Link} from "react-router-dom";
 import Toggle from "../Motion/toggle";
 import "./nav.css"
+import MotionText from "../Motion/Text";
 // class Drawer extends React.Component{
 //     constructor(props) {
 //         super(props);
@@ -54,7 +55,7 @@ class Navbar extends React.Component{
         super(props);
         this.state= {
             open:false,
-            activeTabID:"HOME"
+            activeTabID: window.location.pathname==="/"?"HOME":window.location.pathname.split('/')[1].toUpperCase()
         }
         this.toggle=this.toggle.bind(this);
     }
@@ -68,8 +69,7 @@ class Navbar extends React.Component{
     }
     shouldComponentUpdate(nextProps, nextState, nextContext) {return this.props!==nextProps || this.state!==nextState || this.context!==nextContext;}
     componentDidUpdate(prevProps, prevState, snapshot) {
-         document.getElementById(`${this.state.activeTabID}-top`).style.fontWeight="bold";
-       document.getElementById(`${this.state.activeTabID}-top`).style.color="#b26980";
+         // document.getElementById(`${this.state.activeTabID}-top`).style.backgroundColor="rgba(229,61,0,0.32)"
     }
     componentWillUnmount() {
         window.removeEventListener('resize', (e)=> {
@@ -112,8 +112,13 @@ class Navbar extends React.Component{
               ref={ref}
               {...props}/>)
         })
+       const T = motion(TextRef);
+        const Inner = (props) => {
+           return <T span {...props}/>
+        }
         return(
-              <MotionConfig transition={{type:'spring', bounce: 0.2, duration: 0.5}}>
+              <MotionConfig
+                 transition={{type:'spring', bounce: 0.2, duration: 0.5}}>
                   <motion.div layout
                         custom={this.state}
                         animate={this.state.open?"open":"closed"}
@@ -170,7 +175,7 @@ class Navbar extends React.Component{
                                            padding: 0,
                                            height: 60,
                                            alignItems: 'center',
-                                           justifyContent: 'center',
+                                           justifyContent: 'space-around',
                                            margin: 0,
                                            display: this.state.open?"none":'flex',
                                            listStyleType: "none"}}>
@@ -178,25 +183,26 @@ class Navbar extends React.Component{
                                            return (
                                                  <MLink
                                                       id={item.text.toUpperCase()+'-top'}
-                                                      onClick={(e)=>{
+                                                      onClick={()=>{
+                                                         // e.preventDefault();
                                                          this.setState({
                                                             ...this.state,
                                                             open:false,
                                                             activeTabID: item.text.toUpperCase()
                                                          })
                                                       }}
-                                                      whileHover={{scale:1.08, background: 'hsla(190, 20%, 50%, 0.1)'}}
-                                                       whileTap={{scale: 0.9}}
+                                                      whileHover={{scale:1, background: 'hsla(190, 20%, 50%, 0.2)'}}
+                                                       whileTap={{scale: 1}}
                                                        style={{
-                                                          borderRadius:10,
+                                                          borderRadius:12,
                                                           textDecoration:'none',
                                                           color:'white',
-                                                          padding:10,
+                                                          padding:15,
                                                           background: 'hsla(190, 20%, 50%, 0.0)',
                                                           width: "100%",
                                                           height: "60%",
                                                           display: 'flex',
-                                                          marginInline:15,
+                                                          // marginInline:15,
                                                           justifyContent: 'center',
                                                           alignItems: 'center'}}
                                                        key={item.text+index}
@@ -252,14 +258,20 @@ class Navbar extends React.Component{
                                  })}
                               </motion.ul>
                               <motion.div
+                                 style={{
+                                    opacity: this.state.open?0:1,
+                                    overflow:"hidden", padding: 0,margin: 0, width: 'auto', display: 'flex', justifyContent: 'center', alignItems: 'center'}}
                                  className={'brand-right'}
                                  id={"Brand"}>
                                  <MText
-                                    color={"white"}
+                                    color={"rgba(255,134,99,0.74)"}
+                                    style={{fontWeight: "bolder",
+                                       display: 'flex', margin: 0, padding: 0, justifyContent: 'center', alignItems: "center"}}
+                                    h5
+                                    visible={true}
+                                    speed={0.05}
                                     element={motion(TextRef)}
-                                    visible={!this.state.open}
-                                    speed={0.025}
-                                    text={JSON.parse(localStorage.getItem('user'))?.email || this.state.activeTabID}
+                                    text={this.state.activeTabID}
                                    />
                               </motion.div>
                               {this.props.children}

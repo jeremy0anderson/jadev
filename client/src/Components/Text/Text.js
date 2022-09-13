@@ -1,6 +1,8 @@
 import { motion } from "framer-motion"
 import * as React from "react";
 
+
+
 const Text = ({ text, visible, ...props }) => {
    const letters = Array.from(text)
    
@@ -39,21 +41,30 @@ const Text = ({ text, visible, ...props }) => {
             ease: [0, 0.37, 0.715, 1], duration: props.duration | 0.4}
       }
    }
+   const PRef = React.forwardRef((props, ref)=>{
+      return (<Text span ref={ref} {...props}/>);
+   }), P = motion(PRef);
    
    return (
       <props.element
-         style={{ display: "flex", overflow: "hidden", color: props.color}}
+         color={props.color}
+         css={props.css || {}}
+         style={{
+            justifyContent: 'center', alignItems: "center",
+            display: "inline-flex",
+            flexWrap:"none",
+            overflow: "hidden",
+            ...props.style}}
          variants={container}
          initial="hidden"
          animate={visible ? "visible" : "hidden"}
-         {...props}
-      >
-         {letters.map((letter, index) => (
-            <motion.span style={{color: props.color}} key={index} variants={item}>
-               {letter === " " ? "\u00A0" : letter}
-            </motion.span>
+         {...props}>
+            {letters.map((letter, index) => (
+               <props.element span={true} key={index} variants={item}>
+                  {letter === " " ? "\u00A0" : letter}
+               </props.element>
          ))}
-      </props.element>
+         </props.element>
    )
 }
 

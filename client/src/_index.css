@@ -7,11 +7,30 @@ button{
     background:none;
     color: inherit;
 }
+.background-blur{
+    backdrop-filter: blur(15px) saturate(100%) opacity(1) brightness(100%);
+    -webkit-backdrop-filter: blur(15px) saturate(100%) opacity(1) brightness(100%);
+}
 
 
+h1 span, h2 span, h3 span, h4 span, h5 span, h6 span, p span, span span{
+    margin:0!important;
+    padding:0!important;
+}
+@media(max-width:650px){
 
-
-
+    .textarea-spacer{
+        display: none!important;
+    }
+    #contact-fields{
+        flex-direction: column;
+        width: 90%;
+    }
+    #Contact-main-form{
+        position:absolute!important;
+        top: 180px!important;
+    }
+}
 
 /*Mobile screen dependencies*/
 @media(max-width: 600px){
@@ -23,14 +42,18 @@ button{
     /*    display: none!important;*/
     /*}*/
     .single-skill{
-        width: 90px!important;
-        height: 90px!important;
+        width: 80px!important;
+        height: 70px!important;
+    }
+    .single-skill p{
+        font-size: 12px!important;
     }
     .single-skill-img{
-        width: 50px!important;
-        height:50px!important;
+        width: 40px!important;
+        height:40px!important;
     }
     .textarea-spacer{
         display: none!important;
     }
+
 }
